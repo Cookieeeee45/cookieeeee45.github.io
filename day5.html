@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 - 啟程回家</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 全局深色主題 --- */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            padding-bottom: 60px;
+        }
+
+        .top-nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+        }
+
+        .page-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+        }
+
+        /* --- 卡片樣式 --- */
+        .step-card {
+            background: rgba(40, 44, 52, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* 緊急時間標記 (紅色) */
+        .time-badge-urgent {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(255, 65, 108, 0.6);
+        }
+
+        .time-badge {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .card-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; color: #fff; }
+        .card-text { font-size: 1.2rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 15px; }
+
+        /* --- 交通區塊 --- */
+        .transport-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid #26de81;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .transport-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .step-icon { font-size: 1.5rem; margin-right: 15px; }
+        .line-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; margin-right: 5px; color: #333; }
+        .line-green { background-color: #26de81; } /* 中央線 */
+        .line-blue { background-color: #00a8ff; color: white; } /* JR */
+
+        /* --- Google Maps 按鈕 --- */
+        .btn-map {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background: linear-gradient(135deg, #4285F4, #2b72ee);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn-map:active { transform: scale(0.98); }
+        .btn-map i { margin-right: 10px; font-size: 1.4rem; }
+
+        /* 警告框 */
+        .warning-box {
+            border: 2px solid #ff4757;
+            background: rgba(255, 71, 87, 0.1);
+            color: #ff6b81;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
+        <h1 class="page-title">Day 5 回家囉</h1>
+    </div>
+
+    <div class="container mt-4">
+
+        <div class="step-card" style="border-color: #ff4757;">
+            <div class="time-badge-urgent">08:20</div>
+            <h2 class="card-title text-danger">⚠️ 絕對準時：退房</h2>
+            <div class="card-text">
+                <p>飛機不等人！請務必在 8:20 前完成退房手續，走出飯店。</p>
+                <p>檢查：護照、錢包、手機、房卡歸還。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Osaka+View+Hotel+Honmachi" target="_blank" class="btn-map">
+                <i class="fa-solid fa-hotel"></i> 導航：Osaka View Hotel
+            </a>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">08:30</div>
+            <h2 class="card-title">地鐵：本町 ➝ 弁天町</h2>
+            <div class="card-text">
+                <div class="transport-box">
+                    <h5 class="fw-bold mb-3">🚀 第一段：搭綠色線</h5>
+                    <div class="transport-step">
+                        <div class="step-icon">🟢</div>
+                        <div>進本町站，找 <strong><span class="line-tag line-green">C</span>中央線 (深綠色)</strong>。</div>
+                    </div>
+                    <div class="transport-step">
+                        <div class="step-icon">🚃</div>
+                        <div>往「Cosmosquare」方向搭 <strong>2 站</strong>。</div>
+                    </div>
+                    <div class="transport-step">
+                        <div class="step-icon">📍</div>
+                        <div>在<strong>「弁天町 (C13)」</strong>下車。</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Miyako+Soba+Taisho6" target="_blank" class="btn-map">
+                <i class="fa-solid fa-train"></i> 導航：本町站入口
+            </a>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">08:45</div>
+            <h2 class="card-title">轉乘 JR (關鍵時刻)</h2>
+            <div class="card-text">
+                <p>這裡要出地鐵站，進 JR 站。跟著藍色指標走。</p>
+                
+                <div class="transport-box" style="border-left-color: #00a8ff;">
+                    <h5 class="fw-bold mb-3">🚀 第二段：轉搭 JR 關空快速</h5>
+                    <div class="transport-step">
+                        <div class="step-icon">👣</div>
+                        <div>刷卡出地鐵閘門，抬頭找藍色 <strong>JR 線</strong> 指標。</div>
+                    </div>
+                    <div class="transport-step">
+                        <div class="step-icon">🎫</div>
+                        <div>刷卡進入 JR 閘門，前往 <strong>2 號月台</strong> (往關西機場)。</div>
+                    </div>
+                    <div class="warning-box">
+                        <i class="fa-solid fa-triangle-exclamation"></i> 超級重要：<br>
+                        請務必走到月台的「前 4 節車廂」位置候車！<br>
+                        (地板上通常有寫 1-4 car ▵)
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Bentencho+Station" target="_blank" class="btn-map">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i> 導航：弁天町站
+            </a>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">08:55</div>
+            <h2 class="card-title">上車前往機場</h2>
+            <div class="card-text">
+                <p>搭乘 <strong>關空快速 (Kansai Airport Rapid)</strong>。</p>
+                <p>車程約 60 分鐘，不用換車，一路坐到終點站。</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">09:50</div>
+            <h2 class="card-title">抵達關西機場</h2>
+            <div class="card-text">
+                <p>下車後，搭手扶梯上 <strong>4 樓</strong> (國際線出境)。</p>
+                <p>尋找 <strong>長榮航空 (EVA AIR)</strong> 櫃台報到。</p>
+                <p>11:50 起飛，9:50 到達剛剛好 (2小時前)。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Station" target="_blank" class="btn-map">
+                <i class="fa-solid fa-plane-departure"></i> 導航：關西機場 T1
+            </a>
+        </div>
+
+        <div class="text-center mt-5 mb-4 text-muted">
+            <p>🎉 恭喜完成大阪獨旅挑戰！</p>
+            <p>一路順風，平安回家。</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
