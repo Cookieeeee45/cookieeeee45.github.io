@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 2 - 購物血拼</title>
+    <title>Day 2 - 購物血拼 (熟食版)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 全局深色主題 (與 Day 1 一致) --- */
+        /* --- 全局深色主題 --- */
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -60,7 +60,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* 時間標記 */
         .time-badge {
             background: linear-gradient(135deg, #00c6ff, #0072ff);
             color: white;
@@ -74,42 +73,14 @@
             box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
         }
 
-        /* 標題與內文 */
-        .card-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #fff;
-        }
+        .card-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; color: #fff; }
+        .card-text { font-size: 1.2rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 15px; }
 
-        .card-text {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #e0e0e0;
-            margin-bottom: 15px;
-        }
+        .check-list { list-style: none; padding: 0; }
+        .check-list li { position: relative; padding-left: 30px; margin-bottom: 10px; font-size: 1.2rem; }
+        .check-list li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: #00c6ff; }
 
-        /* 重點列表 */
-        .check-list {
-            list-style: none;
-            padding: 0;
-        }
-        .check-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        .check-list li::before {
-            content: "\f00c";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: #00c6ff;
-        }
-
-        /* --- Plan B 備案區 (醒目黃色) --- */
+        /* --- Plan B 備案區 --- */
         .plan-b-box {
             background: rgba(243, 156, 18, 0.15);
             border: 2px solid #f39c12;
@@ -117,15 +88,7 @@
             padding: 15px;
             margin-top: 15px;
         }
-        .plan-b-title {
-            color: #f39c12;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .plan-b-title { color: #f39c12; font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
 
         /* --- Google Maps 按鈕 --- */
         .btn-map {
@@ -147,7 +110,6 @@
         .btn-map:active { transform: scale(0.98); }
         .btn-map i { margin-right: 10px; font-size: 1.4rem; }
 
-        /* 特殊按鈕顏色 */
         .btn-shop { background: linear-gradient(135deg, #ff9f43, #ee5253); box-shadow: 0 4px 15px rgba(238, 82, 83, 0.4); }
     </style>
 </head>
@@ -162,36 +124,52 @@
 
         <div class="step-card">
             <div class="time-badge">09:30</div>
-            <h2 class="card-title">購買地鐵一日券</h2>
+            <h2 class="card-title">前往大正「地鐵站」</h2>
             <div class="card-text">
-                <p><strong>地點：</strong>大正地鐵站售票機 (粉色/紅色)</p>
+                <p>請注意：你要去的是「地下鐵」的大正站，不是昨天的 JR 站（雖然就在隔壁）。</p>
                 <ul class="check-list">
-                    <li>選「中文」。</li>
-                    <li>點「卡片 (Card)」。</li>
-                    <li>選 <strong>Enjoy Eco Card 平日 820</strong>。</li>
-                    <li>投錢取卡 (今天整天無限搭乘)。</li>
+                    <li>從飯店 Sobial 出來。</li>
+                    <li>走路約 1 分鐘，找<strong>綠色標誌</strong>的地鐵入口。</li>
                 </ul>
             </div>
-            
+            <a href="https://www.google.com/maps/search/?api=1&query=WORKMAN+Girl+Namba+City4" target="_blank" class="btn-map">
+                <i class="fa-solid fa-location-dot"></i> 導航：大正地鐵站入口
+            </a>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">09:40</div>
+            <h2 class="card-title">購買地鐵一日券</h2>
+            <div class="card-text">
+                <p><strong>售票機顏色：</strong>粉紅色或紅色。</p>
+                <ul class="check-list">
+                    <li>選螢幕右上角「中文」。</li>
+                    <li>點左邊的「卡片 (Card)」。</li>
+                    <li>選 <strong>Enjoy Eco Card 平日 820</strong>。</li>
+                </ul>
+            </div>
             <div class="plan-b-box">
-                <div class="plan-b-title">🛡️ Plan B 買不到？</div>
+                <div class="plan-b-title">🛡️ Plan B</div>
                 <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    沒關係，直接用昨天的 <strong>ICOCA</strong> 刷卡進站，比較貴一點點而已，不用糾結。
+                    買不到就直接刷 <strong>ICOCA</strong> 進站，沒問題的。
                 </p>
             </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">10:00</div>
-            <h2 class="card-title">移動去難波</h2>
+            <h2 class="card-title">搭地鐵去難波</h2>
             <div class="card-text">
                 <ul class="check-list">
-                    <li>進大正站。</li>
-                    <li>坐到「心齋橋站」轉車。</li>
-                    <li>轉 <strong>御堂筋線 (紅線)</strong>。</li>
-                    <li>抵達「難波站 (Namba)」。</li>
+                    <li>進大正站，搭往「心齋橋」方向。</li>
+                    <li>在<strong>「心齋橋站」</strong>下車，不用出站。</li>
+                    <li>看紅色指標，轉乘 <strong>御堂筋線 (Midosuji Line)</strong>。</li>
+                    <li>搭 1 站到<strong>「難波站 (Namba)」</strong>下車。</li>
                 </ul>
             </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji" target="_blank" class="btn-map">
+                <i class="fa-solid fa-train"></i> 導航：難波站
+            </a>
         </div>
 
         <div class="step-card">
@@ -199,39 +177,41 @@
             <h2 class="card-title">WORKMAN Girl</h2>
             <div class="card-text">
                 <p><strong>位置：Namba City 南館 2樓</strong></p>
-                <p>必買：防潑水外套、耐磨褲 (便宜又好穿)。</p>
+                <p>必買：防潑水外套、耐磨褲。</p>
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=WORKMAN+Girl+Namba+City" target="_blank" class="btn-map btn-shop">
                 <i class="fa-solid fa-bag-shopping"></i> 導航：WORKMAN Girl
             </a>
-
             <div class="plan-b-box">
                 <div class="plan-b-title">🛡️ Plan B</div>
                 <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
-                    <strong>Uniqlo / GU</strong> (Namba City 本館 B1)
+                    Uniqlo (Namba City 本館 B1)
                 </p>
                 <a href="https://www.google.com/maps/search/?api=1&query=Uniqlo+Namba+City" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
-                    導航：Uniqlo
+                    導航：Uniqlo Namba
                 </a>
             </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">12:30</div>
-            <h2 class="card-title">午餐：黑門市場</h2>
+            <h2 class="card-title">午餐：黑門市場 (熟食)</h2>
             <div class="card-text">
-                <p><strong>Plan A：黑門中川 (超市)</strong></p>
-                <p>走到市場中段，買盒裝生魚片，便宜新鮮。</p>
+                <p><strong>Plan A：石橋食品 (Ishibashi)</strong></p>
+                <p>這是一家老字號的「關東煮」與「熟食」店。必吃：滷蘿蔔、黑輪、滷肉。<strong>保證全熟，熱騰騰！</strong></p>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Nakagawa" target="_blank" class="btn-map">
-                <i class="fa-solid fa-fish"></i> 導航：黑門中川
+            <a href="https://www.google.com/maps/search/?api=1&query=WORKMAN+Girl+Namba+City5" target="_blank" class="btn-map">
+                <i class="fa-solid fa-utensils"></i> 導航：石橋食品 (關東煮)
             </a>
 
             <div class="plan-b-box">
-                <div class="plan-b-title">🛡️ Plan B 太多人？</div>
-                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    吃 <strong>吉野家</strong> 或 <strong>松屋</strong>。市場門口大馬路旁都有，機器點餐。
+                <div class="plan-b-title">🛡️ Plan B 店家沒有開？</div>
+                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
+                    <strong>吉野家 (Yoshinoya)</strong>：市場附近就有，吃牛丼最安心。
                 </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=WORKMAN+Girl+Namba+City6" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
+                    導航：吉野家 (黑門市場旁)
+                </a>
             </div>
         </div>
 
@@ -239,16 +219,16 @@
             <div class="time-badge">14:30</div>
             <h2 class="card-title">千日前道具街</h2>
             <div class="card-text">
-                <p>看日本廚具、食物模型，很有趣的街道。</p>
+                <p>看廚具、食物模型。從黑門市場走路過去約 5-8 分鐘。</p>
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street" target="_blank" class="btn-map btn-shop">
-                <i class="fa-solid fa-kitchen-set"></i> 導航：道具街
+                <i class="fa-solid fa-kitchen-set"></i> 導航：千日前道具街
             </a>
 
             <div class="plan-b-box">
                 <div class="plan-b-title">🛡️ Plan B 沒興趣？</div>
                 <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
-                    去逛 <strong>Bic Camera</strong> (電器/玩具)。
+                    Bic Camera (電器行)
                 </p>
                 <a href="https://www.google.com/maps/search/?api=1&query=Bic+Camera+Namba" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
                     導航：Bic Camera
@@ -261,7 +241,7 @@
             <h2 class="card-title">心齋橋 藥妝採購</h2>
             <div class="card-text">
                 <p><strong>Plan A：大國藥妝 (Daikoku)</strong></p>
-                <p>通常有中文店員，直接秀圖片給他找。</p>
+                <p>有中文店員，直接秀圖片。</p>
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=Daikoku+Drug+Ultra+Shinsaibashi" target="_blank" class="btn-map btn-shop">
                 <i class="fa-solid fa-pills"></i> 導航：大國藥妝
@@ -269,9 +249,12 @@
 
             <div class="plan-b-box">
                 <div class="plan-b-title">🛡️ Plan B</div>
-                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    <strong>松本清 (Matsumoto Kiyoshi)</strong>：黃色招牌，明亮好找。
+                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
+                    松本清 (黃色招牌)
                 </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=WORKMAN+Girl+Namba+City7" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
+                    導航：松本清 心齋橋
+                </a>
             </div>
         </div>
 
@@ -279,8 +262,7 @@
             <div class="time-badge">19:00</div>
             <h2 class="card-title">晚餐：道頓堀</h2>
             <div class="card-text">
-                <p><strong>Plan A：神座拉麵</strong></p>
-                <p>蔬菜湯底，清爽不油膩。</p>
+                <p><strong>Plan A：神座拉麵</strong> (蔬菜熟食湯底)</p>
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Kamukura" target="_blank" class="btn-map">
                 <i class="fa-solid fa-bowl-food"></i> 導航：神座拉麵
@@ -289,7 +271,7 @@
             <div class="plan-b-box">
                 <div class="plan-b-title">🛡️ Plan B (社恐救星)</div>
                 <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
-                    <strong>一蘭拉麵</strong>：一人一格座位，免講話。
+                    一蘭拉麵
                 </p>
                 <a href="https://www.google.com/maps/search/?api=1&query=Ichiran+Dotonbori" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
                     導航：一蘭拉麵
