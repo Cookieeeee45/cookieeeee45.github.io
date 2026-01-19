@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 - 復古散策 (熟食版)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 全局深色主題 --- */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            padding-bottom: 60px;
+        }
+
+        /* --- 頂部導航 --- */
+        .top-nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+        }
+
+        .page-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+        }
+
+        /* --- 內容卡片 --- */
+        .step-card {
+            background: rgba(40, 44, 52, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .time-badge {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+        }
+
+        .card-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; color: #fff; }
+        .card-text { font-size: 1.2rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 15px; }
+
+        .check-list { list-style: none; padding: 0; }
+        .check-list li { position: relative; padding-left: 30px; margin-bottom: 10px; font-size: 1.2rem; }
+        .check-list li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: #00c6ff; }
+
+        /* --- Plan B 備案區 --- */
+        .plan-b-box {
+            background: rgba(243, 156, 18, 0.15);
+            border: 2px solid #f39c12;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .plan-b-title { color: #f39c12; font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+
+        /* --- Google Maps 按鈕 --- */
+        .btn-map {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background: linear-gradient(135deg, #4285F4, #2b72ee);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn-map:active { transform: scale(0.98); }
+        .btn-map i { margin-right: 10px; font-size: 1.4rem; }
+
+        .btn-shop { background: linear-gradient(135deg, #ff9f43, #ee5253); box-shadow: 0 4px 15px rgba(238, 82, 83, 0.4); }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
+        <h1 class="page-title">Day 3 復古散策</h1>
+    </div>
+
+    <div class="container mt-4">
+
+        <div class="step-card">
+            <div class="time-badge">10:00</div>
+            <h2 class="card-title">Check-out 換飯店</h2>
+            <div class="card-text">
+                <p>今天是大移動日，要帶著行李移動。</p>
+                <ul class="check-list">
+                    <li>退房，拖著行李去大正地鐵站。</li>
+                    <li>搭到<strong>「心齋橋站」</strong>。</li>
+                    <li>轉 <strong>御堂筋線 (紅線)</strong>。</li>
+                    <li>搭 1 站到<strong>「本町站 (Honmachi)」</strong>。</li>
+                </ul>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Miyako+Soba+Taisho6" target="_blank" class="btn-map">
+                <i class="fa-solid fa-train"></i> 導航：本町站
+            </a>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">10:30</div>
+            <h2 class="card-title">飯店寄放行李</h2>
+            <div class="card-text">
+                <p><strong>Osaka View Hotel Honmachi</strong></p>
+                <p>先去飯店櫃台寄放行李，還不能進房間，放完就輕裝出門！</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Osaka+View+Hotel+Honmachi" target="_blank" class="btn-map">
+                <i class="fa-solid fa-hotel"></i> 導航：Osaka View Hotel
+            </a>
+            <div class="plan-b-box">
+                <div class="plan-b-title">🆘 找不到飯店？</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    站在地鐵本町站出口，打開 Google Map，定位自己，看藍點移動方向。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">11:00</div>
+            <h2 class="card-title">前往中崎町</h2>
+            <div class="card-text">
+                <p>這段路稍微複雜一點點，請照著做：</p>
+                <ul class="check-list">
+                    <li>回本町站，搭 <strong>中央線 (綠色)</strong>。</li>
+                    <li>搭到「谷町四丁目」站。</li>
+                    <li>轉 <strong>谷町線 (紫色)</strong>。</li>
+                    <li>搭到<strong>「中崎町站」</strong>。</li>
+                </ul>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Miyako+Soba+Taisho7" target="_blank" class="btn-map">
+                <i class="fa-solid fa-camera"></i> 導航：中崎町站
+            </a>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">11:30</div>
+            <h2 class="card-title">中崎町 散步</h2>
+            <div class="card-text">
+                <p>隨便走小巷子，都是老屋改造的咖啡店，非常適合拍照。</p>
+            </div>
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B 不喜歡老屋？</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    搭一站去「東梅田」，那裡有 Hep Five 摩天輪和百貨公司。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">13:00</div>
+            <h2 class="card-title">午餐：天神橋筋</h2>
+            <div class="card-text">
+                <p>走路過去約 10 分鐘。</p>
+                <p><strong>Plan A：天婦羅 Makino (まきの)</strong></p>
+                <p>因為你不吃生食，我們不去吃壽司。這家是<strong>「現炸天婦羅定食」</strong>，有炸蝦、炸蔬菜、炸半熟蛋，酥脆好吃，保證全熟！</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Miyako+Soba+Taisho8" target="_blank" class="btn-map">
+                <i class="fa-solid fa-shrimp"></i> 導航：天婦羅 Makino
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B 想吃別的？</div>
+                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
+                    <strong>CoCo 壹番屋</strong>：這裡也有分店，吃咖哩飯最保險。
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Miyako+Soba+Taisho9" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
+                    導航：CoCo 壹番屋 (天三店)
+                </a>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">15:30</div>
+            <h2 class="card-title">大阪生活今昔館</h2>
+            <div class="card-text">
+                <p>就在「天神橋筋六丁目」站的樓上 (8樓)。</p>
+                <p>室內的江戶時代街道，可以不用曬太陽。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka0" target="_blank" class="btn-map">
+                <i class="fa-solid fa-landmark"></i> 導航：生活今昔館
+            </a>
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    <strong>扇町公園</strong>：就在旁邊，如果天氣好，買杯飲料坐著發呆也很棒。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">18:00</div>
+            <h2 class="card-title">晚餐：本町周邊</h2>
+            <div class="card-text">
+                <p>搭地鐵回飯店附近 (本町站)。</p>
+                <p><strong>Plan A：鳥貴族 (Torikizoku)</strong></p>
+                <p>知名的連鎖串燒居酒屋。全品項 370 日圓均一價。平板點餐有中文，<strong>雞肉串燒都是熟食</strong>，請放心。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Torikizoku+Honmachi" target="_blank" class="btn-map">
+                <i class="fa-solid fa-beer-mug-empty"></i> 導航：鳥貴族 本町店
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B 想吃飯？</div>
+                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
+                    <strong>彌生軒 (Yayoi-ken)</strong>：日式定食 (炸豬排、烤魚)，白飯吃到飽。
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka1" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
+                    導航：彌生軒 本町
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
