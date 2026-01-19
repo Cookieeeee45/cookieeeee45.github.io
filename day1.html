@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 - 抵達大阪</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 全局深色主題 --- */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            padding-bottom: 60px;
+        }
+
+        /* --- 頂部導航 --- */
+        .top-nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+        }
+
+        .page-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+        }
+
+        /* --- 內容卡片 --- */
+        .step-card {
+            background: rgba(40, 44, 52, 0.8); /* 半透明深灰 */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* 時間標記 */
+        .time-badge {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+        }
+
+        /* 標題與內文 */
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card-text {
+            font-size: 1.2rem; /* 字體加大 */
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        /* 重點列表 */
+        .check-list {
+            list-style: none;
+            padding: 0;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .check-list li::before {
+            content: "\f00c"; /* FontAwesome Check */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #00c6ff;
+        }
+
+        /* --- Plan B 備案區 (醒目黃色) --- */
+        .plan-b-box {
+            background: rgba(243, 156, 18, 0.15); /* 淡黃色背景 */
+            border: 2px solid #f39c12;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .plan-b-title {
+            color: #f39c12;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- Google Maps 按鈕 (超大好按) --- */
+        .btn-map {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background: linear-gradient(135deg, #4285F4, #2b72ee);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn-map:active {
+            transform: scale(0.98);
+        }
+        .btn-map i { margin-right: 10px; font-size: 1.4rem; }
+
+        /* 警告文字 */
+        .warning-text {
+            color: #ff4757;
+            font-weight: bold;
+            background: rgba(255, 71, 87, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
+        <h1 class="page-title">Day 1 抵達大阪</h1>
+    </div>
+
+    <div class="container mt-4">
+
+        <div class="step-card">
+            <div class="time-badge">11:00</div>
+            <h2 class="card-title">購買 ICOCA 卡</h2>
+            
+            <div class="card-text">
+                <ul class="check-list">
+                    <li>出關後上 <strong>2 樓</strong>，走空橋到車站。</li>
+                    <li>找 <strong>藍色 JR 售票機</strong>。</li>
+                    <li>選「繁體中文」→ 點「ICOCA」企鵝圖案 → 投 2000 円。</li>
+                </ul>
+            </div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Station" target="_blank" class="btn-map">
+                <i class="fa-solid fa-location-arrow"></i> 導航：關西機場站
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title"><i class="fa-solid fa-life-ring"></i> Plan B 機器太多人？</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    去旁邊人工櫃台 (Green Window)，手機打字「ICOCA」給店員看。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">11:30</div>
+            <h2 class="card-title">搭 JR 去大正站</h2>
+            
+            <div class="card-text">
+                <ul class="check-list">
+                    <li>刷 ICOCA 進 <strong>藍色 JR 改札口</strong>。</li>
+                    <li>搭乘 <strong>關空快速 (Kansai Airport Rapid)</strong>。</li>
+                    <li class="warning-text">⚠️ 絕對要坐第 1 ~ 4 節車廂！</li>
+                    <li>(車廂外有飛機圖案，不用換車直達大正)</li>
+                </ul>
+            </div>
+            
+            <div class="plan-b-box">
+                <div class="plan-b-title"><i class="fa-solid fa-triangle-exclamation"></i> 坐錯車廂怎麼辦？</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    聽到廣播說要「分離」時，趕快下車，在月台上往前跑到前 4 節。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">13:00</div>
+            <h2 class="card-title">飯店 Check-in</h2>
+            <div class="card-text">
+                <p><strong>Hotel Sobial Osaka Dome Mae</strong></p>
+                <p>從大正站出口走路 1 分鐘就到。先寄放行李。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Sobial+Osaka+Dome+Mae" target="_blank" class="btn-map">
+                <i class="fa-solid fa-hotel"></i> 導航：Hotel Sobial
+            </a>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">13:30</div>
+            <h2 class="card-title">午餐：大正站周邊</h2>
+            
+            <div class="card-text">
+                <p><strong>Plan A：宮古沖繩麵</strong></p>
+                <p>在高架橋下，找紅燈籠或沖繩獅子。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Miyako+Soba+Taisho" target="_blank" class="btn-map">
+                <i class="fa-solid fa-utensils"></i> 導航：宮古沖繩麵
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title"><i class="fa-solid fa-shield-cat"></i> Plan B 找不到路？</div>
+                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
+                    <strong>餃子的王將</strong> (車站正對面)
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Gyoza+no+Ohsho+Taisho" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
+                    導航：餃子的王將
+                </a>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">17:00</div>
+            <h2 class="card-title">前往京瓷巨蛋</h2>
+            <div class="card-text">
+                <p>從飯店走路約 10 分鐘，或跟著人潮走。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka" target="_blank" class="btn-map">
+                <i class="fa-solid fa-map-location-dot"></i> 導航：京瓷巨蛋
+            </a>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">17:30</div>
+            <h2 class="card-title">晚餐：Aeon Mall</h2>
+            
+            <div class="card-text">
+                <p>巨蛋旁邊的大商場 4 樓美食街。</p>
+                <p><strong>Plan A：花丸烏龍麵 (Hanamaru)</strong><br>拿托盤 → 夾炸物 → 點麵。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Osaka+Dome+City" target="_blank" class="btn-map">
+                <i class="fa-solid fa-burger"></i> 導航：Aeon Mall
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    如果太累，直接吃美食街的 <strong>麥當勞</strong> 或 <strong>肯德基</strong>。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card" style="border-left: 5px solid #00c6ff;">
+            <div class="time-badge">19:00</div>
+            <h2 class="card-title">🎉 活動開始</h2>
+            <div class="card-text">
+                <p>請準時入場。結束後人潮眾多，慢慢走回飯店即可。</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
