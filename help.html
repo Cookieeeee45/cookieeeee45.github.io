@@ -94,8 +94,8 @@
 
         /* 不同類型的顏色 */
         .type-danger { border-left-color: #ff4757; } /* 緊急 */
-        .type-info { border-left-color: #0984e3; }   /* 詢問 */
-        .type-shop { border-left-color: #ffa502; }   /* 購物/吃 */
+        .type-info { border-left-color: #0984e3; }    /* 詢問 */
+        .type-shop { border-left-color: #ffa502; }    /* 購物/吃 */
 
         /* --- 放大後的 Modal 樣式 --- */
         .modal-content {
@@ -147,6 +147,15 @@
             margin-top: 30px;
             border: 1px solid rgba(255,255,255,0.2);
         }
+        .hotel-link {
+            color: #00c6ff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 5px;
+        }
+        .hotel-link:hover { text-decoration: underline; color: #fff; }
     </style>
 </head>
 <body>
@@ -216,16 +225,23 @@
 
         <div class="hotel-box">
             <h5 class="text-white mb-3"><i class="fa-solid fa-bed"></i> 住宿資訊 (給司機看)</h5>
+            
             <div class="mb-3">
-                <small class="text-info">1/21 - 1/22</small><br>
-                <strong>Hotel Sobial Osaka Dome Mae</strong><br>
-                <span class="text-white-50">大阪市港区波除2-5-8</span>
+                <small class="text-info">1/21 (三) - 1/22 (四)</small>
+                <a href="https://maps.google.com/?cid=13740304304945311502&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="hotel-link">
+                    九條南民宿 (Kujo-Minami)<br>
+                    <span style="font-size:0.9rem; color:#ccc; font-weight:normal;">大阪市西区九条南 2-5-8</span>
+                </a>
             </div>
+            
             <hr style="border-color: rgba(255,255,255,0.3);">
+            
             <div>
-                <small class="text-info">1/23 - 1/25</small><br>
-                <strong>Osaka View Hotel Honmachi</strong><br>
-                <span class="text-white-50">大阪市中央区本町4-5-2</span>
+                <small class="text-info">1/23 (五) - 1/25 (日)</small>
+                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+View+Hotel+Honmachi" target="_blank" class="hotel-link">
+                    Osaka View Hotel Honmachi<br>
+                    <span style="font-size:0.9rem; color:#ccc; font-weight:normal;">大阪市中央区本町 4-5-2</span>
+                </a>
             </div>
         </div>
 
