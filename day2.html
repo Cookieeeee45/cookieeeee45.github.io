@@ -9,130 +9,289 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
+        /* --- 全局設定 (配合 Index 風格) --- */
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: #fff;
+            min-height: 100vh;
             padding-bottom: 60px;
         }
-        .top-nav {
-            background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px);
-            padding: 15px 20px; position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center;
+
+        /* --- Header --- */
+        .hero-header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
+
         .back-btn {
-            color: #fff; text-decoration: none; font-size: 1.2rem; display: flex; align-items: center;
-            padding: 8px 15px; background: rgba(255,255,255,0.1); border-radius: 50px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            transition: all 0.3s;
         }
+        .back-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
         .page-title {
-            flex-grow: 1; text-align: center; font-size: 1.5rem; font-weight: 700; margin: 0;
-            text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
         }
+
+        /* --- 卡片樣式 --- */
         .step-card {
-            background: rgba(40, 44, 52, 0.8);
+            background: rgba(255, 255, 255, 0.05); /* 玻璃質感 */
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px; padding: 25px; margin-bottom: 25px;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
+
+        /* 時間標記 */
         .time-badge {
             background: linear-gradient(135deg, #00c6ff, #0072ff);
-            color: white; padding: 5px 15px; border-radius: 10px;
-            font-size: 1.3rem; font-weight: 800; font-family: 'Montserrat', sans-serif;
-            display: inline-block; margin-bottom: 15px;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            margin-bottom: 15px;
             box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
         }
-        .card-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; color: #fff; }
-        .card-text { font-size: 1.2rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 15px; }
 
+        /* 標題與內文 */
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            border-left: 5px solid #00c6ff;
+            padding-left: 15px;
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .highlight { color: #00c6ff; font-weight: bold; }
+
+        /* 列表 */
+        .check-list { list-style: none; padding: 0; margin-top: 10px; }
+        .check-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+        }
+        .check-list li::before {
+            content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; left: 0; color: #00c6ff; top: 3px;
+        }
+
+        /* 交通區塊 */
+        .transport-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #aaa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+        }
+        .transport-step { display: flex; align-items: flex-start; margin-bottom: 15px; }
+        .step-icon { font-size: 1.4rem; margin-right: 15px; min-width: 30px; text-align: center; }
+
+        /* 按鈕 */
         .btn-map {
             display: flex; justify-content: center; align-items: center; width: 100%;
-            background: linear-gradient(135deg, #4285F4, #2b72ee); color: white;
-            font-size: 1.2rem; font-weight: bold; padding: 15px; border-radius: 12px;
-            text-decoration: none; margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+            background: linear-gradient(135deg, #4285F4, #2b72ee);
+            color: white; font-size: 1.1rem; font-weight: bold;
+            padding: 15px; border-radius: 15px; text-decoration: none;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+            transition: transform 0.2s;
         }
-        .btn-shop { background: linear-gradient(135deg, #ff9f43, #ee5253); box-shadow: 0 4px 15px rgba(238, 82, 83, 0.4); }
+        .btn-map:active { transform: scale(0.98); }
+        .btn-map i { margin-right: 10px; }
 
+        .btn-shop { background: linear-gradient(135deg, #ff9f43, #ee5253); box-shadow: 0 5px 15px rgba(238, 82, 83, 0.4); }
+        .btn-plan-b { background: linear-gradient(135deg, #f39c12, #e67e22); box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4); }
+
+        /* Plan B 區塊 */
         .plan-b-box {
-            background: rgba(243, 156, 18, 0.15); border: 2px solid #f39c12;
-            border-radius: 15px; padding: 15px; margin-top: 15px;
+            border: 2px dashed #f39c12;
+            background: rgba(243, 156, 18, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
         }
-        .plan-b-title { color: #f39c12; font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; }
+        .plan-b-title { color: #f39c12; font-weight: 700; margin-bottom: 8px; font-size: 1.1rem; }
     </style>
 </head>
 <body>
-    <div class="top-nav">
+
+    <div class="hero-header">
         <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
         <h1 class="page-title">Day 2 購物與巨蛋</h1>
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-4" style="max-width: 800px;">
 
         <div class="step-card">
             <div class="time-badge">09:30</div>
             <h2 class="card-title">前往難波 (Namba)</h2>
             <div class="card-text">
-                <p>今天我們要去買 WORKMAN！</p>
-                <p>走到九條站，搭乘 <strong>阪神電車 (Hanshin Line)</strong>，不用轉車，直達「大阪難波」。</p>
+                <p>今天我們要搭<strong>「阪神電車」</strong>，請注意不是地鐵喔！</p>
+
+                <div class="transport-box" style="border-left-color: #f39c12;">
+                    <h4 style="color: #f39c12; margin-bottom: 15px;">🚀 阪神難波線 (Hanshin)</h4>
+                    <div class="transport-step">
+                        <div class="step-icon">👀</div>
+                        <div>
+                            走到九條站，找 <span style="color:#f39c12; font-weight:bold;">橘黃色「阪神電車」</span> 指標。<br>
+                            (不要走去綠色的中央線喔！)
+                        </div>
+                    </div>
+                    <div class="transport-step">
+                        <div class="step-icon">🎫</div>
+                        <div>刷 ICOCA 進站。</div>
+                    </div>
+                    <div class="transport-step">
+                        <div class="step-icon">🚃</div>
+                        <div>
+                            搭往 <strong>「大阪難波 / 奈良」</strong> 方向。<br>
+                            搭 2 站，在<strong>「大阪難波」</strong>下車。
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://maps.app.goo.gl/g6t5k1X4q1B2" target="_blank" class="btn-map">
+                    <i class="fa-solid fa-train"></i> 導航：阪神 九條站
+                </a>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kujo+Station+Hanshin" target="_blank" class="btn-map">
-                <i class="fa-solid fa-train"></i> 導航：九條站 (阪神線)
-            </a>
         </div>
 
         <div class="step-card">
             <div class="time-badge">10:00</div>
-            <h2 class="card-title">WORKMAN Girl</h2>
+            <h2 class="card-title">WORKMAN Girl 購物</h2>
             <div class="card-text">
                 <p><strong>位置：Namba City 南館 2樓</strong></p>
-                <p>這間款式很齊全！記得找：</p>
-                <ul>
-                    <li>防潑水連帽外套</li>
-                    <li>防滑防水鞋</li>
-                    <li>Aero Stretch 褲子</li>
+                <p>這是市區最大的旗艦店，我們把衣服一次買齊。</p>
+                
+                <h4 style="color: #0dcaf0; margin-top:15px;">👇 必買推薦：</h4>
+                <ul class="check-list">
+                    <li><strong>撥水連帽外套：</strong> 日本國民外套，防潑水又透氣。</li>
+                    <li><strong>防滑鞋：</strong> 廚師鞋改量版，下雨天走路超穩。</li>
+                    <li><strong>Aero Stretch 褲子：</strong> 彈性超好，適合旅遊穿。</li>
                 </ul>
+
+                <a href="https://maps.app.goo.gl/vQZ8q1X4q1B2" target="_blank" class="btn-map btn-shop">
+                    <i class="fa-solid fa-shirt"></i> 導航：Workman Girl (Namba City)
+                </a>
+
+                <div class="plan-b-box">
+                    <div class="plan-b-title"><i class="fa-solid fa-lightbulb"></i> Plan B：找不到店？</div>
+                    <p style="margin:0; color:#ddd;">這家店在「南館」，跟無印良品同一棟。如果迷路，直接去逛<strong>「Uniqlo」</strong>(Namba City 本館 B1)，也很好買。</p>
+                    <a href="https://maps.app.goo.gl/ABC123XYZ" target="_blank" class="btn-map btn-plan-b">
+                        <i class="fa-solid fa-store"></i> 導航：Uniqlo (Namba City)
+                    </a>
+                </div>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Workman+Girl+Namba+City" target="_blank" class="btn-map btn-shop">
-                <i class="fa-solid fa-bag-shopping"></i> 導航：Workman Girl
-            </a>
         </div>
 
         <div class="step-card">
             <div class="time-badge">12:00</div>
-            <h2 class="card-title">藥妝補貨</h2>
+            <h2 class="card-title">午餐與藥妝補貨</h2>
             <div class="card-text">
-                <p>難波附近有很多藥妝店 (大國、松本清)。</p>
-                <p><strong>必買清單：</strong> EVE 止痛藥、合利他命、休足時間、蒸氣眼罩。</p>
-            </div>
-            <div class="plan-b-box">
-                <div class="plan-b-title">💡 小技巧</div>
-                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    買完東西後，建議先搭阪神電車回九條民宿「放東西」，這樣下午看展覽才輕鬆！
-                </p>
-            </div>
-        </div>
+                <p>難波有很多藥妝店，買完剛好去吃飯。</p>
+                
+                <h4 style="color: #0dcaf0; margin-top:15px;">💊 藥妝店推薦：</h4>
+                <ul class="check-list">
+                    <li><strong>大國藥妝 (Daikoku)：</strong> 價格通常最便宜。</li>
+                    <li><strong>必買：</strong> EVE 止痛藥 (藍金色)、合利他命、休足時間、蒸氣眼罩。</li>
+                </ul>
+                <a href="https://maps.app.goo.gl/DEF456XYZ" target="_blank" class="btn-map btn-shop">
+                    <i class="fa-solid fa-pills"></i> 導航：大國藥妝 (難波)
+                </a>
 
-        <div class="step-card" style="border-left: 5px solid #00c6ff;">
-            <div class="time-badge">16:30</div>
-            <h2 class="card-title">走路去京瓷巨蛋</h2>
-            <div class="card-text">
-                <p>東西放好後，從民宿走路去巨蛋 (約 10-12 分鐘)。</p>
-                <p>可以在附近的 Aeon Mall 吃點東西，或者買飯糰去排隊。</p>
+                <hr style="border-color:rgba(255,255,255,0.1); margin: 20px 0;">
+
+                <h4 style="color: #ff9f43;">🍜 午餐推薦：神座拉麵</h4>
+                <p>這家拉麵有很多蔬菜，湯頭是甜的，不會太鹹，很適合台灣人口味。</p>
+                <a href="https://maps.app.goo.gl/GHI789XYZ" target="_blank" class="btn-map btn-food">
+                    <i class="fa-solid fa-bowl-food"></i> 導航：神座拉麵 (道頓堀)
+                </a>
+
+                <div class="plan-b-box">
+                    <div class="plan-b-title"><i class="fa-solid fa-utensils"></i> Plan B：不想排隊？</div>
+                    <p style="margin:0; color:#ddd;">去<strong>「難波 Walk 地下街」</strong>，隨便找一家豬排飯或定食店，不用排隊又有冷氣吹。</p>
+                    <a href="https://maps.app.goo.gl/JKL012XYZ" target="_blank" class="btn-map btn-plan-b">
+                        <i class="fa-solid fa-stairs"></i> 導航：難波 Walk 地下街
+                    </a>
+                </div>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka" target="_blank" class="btn-map">
-                <i class="fa-solid fa-map-location-dot"></i> 導航：京瓷巨蛋
-            </a>
         </div>
 
         <div class="step-card">
-            <div class="time-badge">19:00</div>
-            <h2 class="card-title">🎉 活動開始</h2>
+            <div class="time-badge">14:00</div>
+            <h2 class="card-title">戰術性撤退 (回民宿)</h2>
             <div class="card-text">
-                <p>享受你的活動！</p>
-                <p>結束後，一樣走路回九條民宿，不用人擠人搭電車。</p>
+                <p>這是住九條的最大優勢！買了一堆重物，<strong>千萬不要提著去巨蛋</strong>。</p>
+                <ul class="check-list">
+                    <li>搭<strong>阪神電車</strong>原路返回「九條站」。</li>
+                    <li>把戰利品丟回民宿。</li>
+                    <li>躺在床上滑手機休息 1 小時，幫手機充電，也幫自己充電。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">16:30</div>
+            <h2 class="card-title">走路去京瓷巨蛋</h2>
+            <div class="card-text">
+                <p>東西放好後，一身輕便出門。從民宿走路約 10-15 分鐘。</p>
+                
+                <h4 style="color: #0dcaf0; margin-top:15px;">👇 晚餐建議：</h4>
+                <ul class="check-list">
+                    <li><strong>Aeon Mall：</strong> 巨蛋旁邊的商場，如果不趕時間，可以先去吃飽。</li>
+                    <li><strong>便利商店：</strong> 如果趕著排隊，去 Lawson 買飯糰和炸雞帶著吃。</li>
+                </ul>
+
+                <a href="https://maps.app.goo.gl/MNO345XYZ" target="_blank" class="btn-map">
+                    <i class="fa-solid fa-star"></i> 導航：京瓷巨蛋
+                </a>
+
+                <div class="plan-b-box">
+                    <div class="plan-b-title"><i class="fa-solid fa-clock"></i> Plan B：快遲到了？</div>
+                    <p style="margin:0; color:#ddd;">直接去 Aeon Mall 一樓的<strong>「麥當勞」</strong>或<strong>「肯德基」</strong>外帶，拿在手上吃最快。</p>
+                    <a href="https://maps.app.goo.gl/PQR678XYZ" target="_blank" class="btn-map btn-plan-b">
+                        <i class="fa-solid fa-burger"></i> 導航：Aeon Mall 麥當勞
+                    </a>
+                </div>
             </div>
         </div>
 
     </div>
+
 </body>
 </html>
