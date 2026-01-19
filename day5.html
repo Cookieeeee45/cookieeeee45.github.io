@@ -146,6 +146,37 @@
             margin-top: 20px;
         }
         .plan-b-title { color: #ff4757; font-weight: 700; margin-bottom: 8px; font-size: 1.1rem; }
+
+        /* 計程車放大卡片 */
+        .taxi-card {
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        .taxi-card:active { transform: scale(0.95); }
+        
+        /* 放大後的 Modal 字體 */
+        .modal-body.taxi-modal {
+            background: #fff;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.4;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -238,7 +269,7 @@
                     <span style="font-size:1rem; font-weight:normal; color:#fff;">(因為第 5-8 節會在半路分離，載你去和歌山看海，你就回不了家了)</span>
                 </div>
 
-                <a href="https://www.google.com/maps/search/?api=1&query=Bentencho+Station" target="_blank" class="btn-map">
+                <a href="https://maps.google.com/?cid=1693844595140273708&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-map">
                     <i class="fa-solid fa-map-pin"></i> 導航：弁天町站 (JR)
                 </a>
             </div>
@@ -269,17 +300,41 @@
                 <div class="plan-b-box">
                     <div class="plan-b-title">🆘 終極 Plan B：我迷路/車停駛了！</div>
                     <p>如果你在市區完全卡住，或者電車停駛，請直接攔計程車。</p>
-                    <p>給司機看這句話：</p>
-                    <div style="background:#fff; color:#000; padding:15px; border-radius:10px; font-weight:bold; font-size:1.2rem; margin-top:10px;">
-                        関西空港までお願いします。<br>
-                        (請載我去關西機場)
+                    <p>點擊下面這張卡片，秀給司機看：</p>
+                    
+                    <div class="taxi-card" onclick="showTaxiModal()">
+                        <i class="fa-solid fa-taxi"></i> 點擊放大給司機看<br>
+                        関西空港まで<br>お願いします
                     </div>
+
                     <p style="margin-top:10px; color:#ddd;">車資約 20,000 日圓，雖然很貴，但比重買機票便宜。</p>
                 </div>
             </div>
         </div>
 
     </div>
+
+    <div class="modal fade" id="taxiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header border-0 bg-dark text-white">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body taxi-modal">
+                    関西空港まで<br>お願いします。<br>
+                    (請載我去關西機場)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showTaxiModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('taxiModal'));
+            myModal.show();
+        }
+    </script>
 
 </body>
 </html>
