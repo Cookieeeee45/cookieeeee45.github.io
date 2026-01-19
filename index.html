@@ -3,367 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大阪獨旅攻略 (5天4夜)</title>
+    <title>2026 大阪獨旅生存攻略</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2563eb;
-            --accent: #f59e0b;
-            --bg: #f3f4f6;
-            --card-bg: #ffffff;
-            --text: #1f2937;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            padding-bottom: 80px; /* Space for bottom nav */
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        header h1 { margin: 0; font-size: 1.5rem; }
-        header p { margin: 5px 0 0; opacity: 0.9; font-size: 0.9rem; }
-
-        /* Navigation */
-        .nav-bar {
-            display: flex;
-            overflow-x: auto;
-            background: white;
-            padding: 10px;
-            gap: 10px;
-            position: sticky;
-            top: 70px;
-            z-index: 99;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .nav-link {
-            flex: 0 0 auto;
-            padding: 8px 16px;
-            background: #e5e7eb;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--text);
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-        .nav-link.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Container */
-        .container {
-            padding: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .card-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            background-color: #ddd;
-        }
-        .card-content {
-            padding: 15px;
-        }
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0 0 10px;
-            color: #111;
-        }
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            font-weight: bold;
-        }
-        .tag-food { background: #fee2e2; color: #b91c1c; }
-        .tag-spot { background: #dbeafe; color: #1e40af; }
-        .tag-shop { background: #d1fae5; color: #047857; }
-        .tag-move { background: #f3f4f6; color: #4b5563; border: 1px solid #ddd;}
-
-        /* Buttons */
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 10px;
-            box-sizing: border-box;
-            transition: opacity 0.2s;
-        }
-        .btn:active { opacity: 0.8; }
-        .btn-outline {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        .btn-copy {
-            background: var(--accent);
-            margin-top: 5px;
-        }
-
-        /* Highlights */
-        .highlight-box {
-            background: #fffbeb;
-            border-left: 4px solid #f59e0b;
-            padding: 10px;
-            margin: 10px 0;
-            font-size: 0.95rem;
-        }
-
-        /* Address Block */
-        .address-block {
-            background: #f8fafc;
-            padding: 10px;
-            border-radius: 8px;
-            margin: 10px 0;
-            font-family: monospace;
-            font-size: 0.9rem;
-            border: 1px dashed #cbd5e1;
-        }
-
-        /* Footer */
-        .footer-note {
-            text-align: center;
-            color: #6b7280;
-            font-size: 0.8rem;
-            margin-top: 30px;
-        }
+        body { font-family: "Microsoft JhengHei", sans-serif; background-color: #f8f9fa; }
+        .hero-section { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 40px 20px; text-align: center; border-radius: 0 0 20px 20px; margin-bottom: 20px; }
+        .nav-pills .nav-link.active { background-color: #ff6b6b; color: white; }
+        .nav-pills .nav-link { color: #333; margin: 0 5px; }
+        .card { border: none; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; overflow: hidden; }
+        .card-header { background-color: #fff; font-weight: bold; border-bottom: 2px solid #f0f0f0; }
+        .btn-map { background-color: #4285F4; color: white; border-radius: 50px; padding: 5px 15px; font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 10px; }
+        .btn-map:hover { background-color: #3367d6; color: white; }
+        .plan-b { background-color: #fff3cd; padding: 10px; border-radius: 10px; font-size: 0.9rem; border-left: 5px solid #ffc107; margin-top: 10px; }
+        .emergency-card { background-color: #ffebee; border: 2px solid #ef5350; }
+        .timeline-time { font-weight: bold; color: #ff6b6b; font-size: 1.2rem; }
+        /* 圖片樣式 */
+        .scenic-img { width: 100%; height: 200px; object-fit: cover; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>大阪 5 天獨旅攻略</h1>
-    <p>放輕鬆，跟著按鈕走就不會迷路！</p>
-</header>
+    <div class="hero-section">
+        <h1>🇯🇵 大阪獨旅生存攻略</h1>
+        <p>2026.01.21 - 01.25</p>
+        <small>這是一份為了「絕對不迷路」而生的指南</small>
+    </div>
 
-<div class="nav-bar">
-    <a href="#info" class="nav-link active">重要資訊</a>
-    <a href="#day1" class="nav-link">Day 1</a>
-    <a href="#day2" class="nav-link">Day 2</a>
-    <a href="#day3" class="nav-link">Day 3</a>
-    <a href="#day4" class="nav-link">Day 4</a>
-    <a href="#day5" class="nav-link">Day 5</a>
-</div>
+    <div class="container pb-5">
+        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist" style="overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px;">
+            <li class="nav-item"><button class="nav-link active" id="pills-info-tab" data-bs-toggle="pill" data-bs-target="#pills-info" type="button">🚨 重點</button></li>
+            <li class="nav-item"><button class="nav-link" id="pills-d1-tab" data-bs-toggle="pill" data-bs-target="#pills-d1" type="button">Day 1</button></li>
+            <li class="nav-item"><button class="nav-link" id="pills-d2-tab" data-bs-toggle="pill" data-bs-target="#pills-d2" type="button">Day 2</button></li>
+            <li class="nav-item"><button class="nav-link" id="pills-d3-tab" data-bs-toggle="pill" data-bs-target="#pills-d3" type="button">Day 3</button></li>
+            <li class="nav-item"><button class="nav-link" id="pills-d4-tab" data-bs-toggle="pill" data-bs-target="#pills-d4" type="button">Day 4</button></li>
+            <li class="nav-item"><button class="nav-link" id="pills-d5-tab" data-bs-toggle="pill" data-bs-target="#pills-d5" type="button">Day 5</button></li>
+        </ul>
 
-<div class="container">
+        <div class="tab-content" id="pills-tabContent">
 
-    <section id="info">
-        <h2 style="border-bottom: 2px solid var(--primary); padding-bottom: 5px;">🏨 住宿資訊 (給計程車看)</h2>
-        
-        <div class="card">
-            <div class="card-content">
-                <div class="card-title">住宿 A (前兩晚 1/21-22)</div>
-                <p>位於九條站附近。</p>
-                <div class="address-block" id="addr1">
-                    2-chome-5-8 Kujōminami, Nishi Ward, Osaka
+            <div class="tab-pane fade show active" id="pills-info">
+                <div class="card emergency-card">
+                    <div class="card-body">
+                        <h5>🆘 緊急救命日文</h5>
+                        <p>直接拿給路人看：</p>
+                        <ul>
+                            <li><strong>迷路了：</strong>すみません、道に迷いました。ここに行きたいです。</li>
+                            <li><strong>找廁所：</strong>トイレはどこですか？</li>
+                            <li><strong>找車站：</strong>駅はどこですか？</li>
+                        </ul>
+                    </div>
                 </div>
-                <button class="btn btn-copy" onclick="copyText('addr1')">📋 複製地址</button>
-                <a href="https://www.google.com/maps/search/?api=1&query=2-chome-5-8+Kujōminami+Osaka" class="btn" target="_blank">🗺️ Google 地圖導航</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-content">
-                <div class="card-title">住宿 B (後兩晚 1/23-25)</div>
-                <p>位於本町站附近。</p>
-                <div class="address-block" id="addr2">
-                    4-5-2 Honmachi, Chuo Ward, Osaka
+                <div class="card">
+                    <div class="card-body">
+                        <h5>✈️ 航班資訊</h5>
+                        <p><strong>去程：</strong> 1/21 07:00 高雄 -> 關西 (BR182)</p>
+                        <p><strong>回程：</strong> 1/25 11:50 關西 -> 高雄 (BR181)</p>
+                    </div>
                 </div>
-                <button class="btn btn-copy" onclick="copyText('addr2')">📋 複製地址</button>
-                <a href="https://www.google.com/maps/search/?api=1&query=4-5-2+Honmachi+Chuo+Ward+Osaka" class="btn" target="_blank">🗺️ Google 地圖導航</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="day1">
-        <h2 style="margin-top:30px;">✈️ Day 1：抵達與巨蛋</h2>
-        
-        <div class="card">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-move">任務</span>購買 ICOCA 卡</div>
-                <div class="highlight-box">
-                    位置：關西機場車站 2 樓 (JR 藍色售票機)<br>
-                    操作：點選中文 -> 購買 ICOCA -> 投入 2000 日圓
+                <div class="card">
+                    <div class="card-body">
+                        <h5>🏨 住宿資訊</h5>
+                        <p><strong>前兩晚 (1/21-22)：</strong> Hotel Sobial Osaka Dome Mae</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Sobial+Osaka+Dome+Mae" target="_blank" class="btn-map">📍 導航去飯店 (大正)</a>
+                        <hr>
+                        <p><strong>後兩晚 (1/23-24)：</strong> Osaka View Hotel Honmachi</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Osaka+View+Hotel+Honmachi" target="_blank" class="btn-map">📍 導航去飯店 (本町)</a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1590554047334-7d5225c57b54?w=600&q=80" class="card-img" alt="Osaka Street">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-spot">景點</span>九條商店街 (キララ九条)</div>
-                <p>放好行李後，先來這裡感受在地氣氛。隨意找一家章魚燒吃！</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kirara+Kujo+Shopping+Street" class="btn" target="_blank">📍 導航去商店街</a>
+            <div class="tab-pane fade" id="pills-d1">
+                <img src="https://placehold.co/600x400/png?text=Arrival+Osaka" class="scenic-img" alt="大阪抵達">
+                
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <span class="timeline-time">11:00</span> 抵達關西機場
+                        <p>任務：在2樓 JR 站藍色機器買 <strong>ICOCA</strong>。</p>
+                        <p>交通：搭 <strong>JR 關空快速</strong> (坐前4節車廂) 直達大正站。</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kansai+Airport+JR+Station" target="_blank" class="btn-map">📍 機場車站</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">13:30</span> 午餐：大正站周邊
+                        <p>目標：宮古沖繩麵 (Miyako Soba)</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Miyako+Soba+Taisho" target="_blank" class="btn-map">📍 導航去吃麵</a>
+                        <div class="plan-b">🛡️ 備案：如果找不到，吃車站對面的「餃子的王將」。</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">19:00</span> 京瓷巨蛋活動
+                        <p>從飯店走路 10 分鐘可到。</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka" target="_blank" class="btn-map">📍 導航去巨蛋</a>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1599827670351-34446549298e?w=600&q=80" class="card-img" alt="Kyocera Dome">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-spot">必去</span>大阪京瓷巨蛋</div>
-                <p>⚠️ 19:00 前要抵達！從飯店走路過去即可。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka" class="btn" target="_blank">📍 導航去巨蛋</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Osaka+Dome+City" class="btn btn-outline" target="_blank">🍽️ 晚餐：旁邊的 AEON Mall</a>
+            <div class="tab-pane fade" id="pills-d2">
+                <img src="https://placehold.co/600x400/png?text=Shopping+Day" class="scenic-img" alt="逛街日">
+                
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <span class="timeline-time">10:30</span> WORKMAN Girl 採購
+                        <p>位置：Namba City 南館 2樓。必買防潑水外套！</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=WORKMAN+Girl+Namba+City" target="_blank" class="btn-map">📍 導航去 Workman</a>
+                        <div class="plan-b">🛡️ 備案：如果找不到，去本館 B1 的 UNIQLO。</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">12:30</span> 午餐：黑門市場
+                        <p>目標：黑門中川 (超市) 買生魚片。</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Nakagawa" target="_blank" class="btn-map">📍 導航去黑門中川</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">19:00</span> 晚餐：道頓堀
+                        <p>推薦：神座拉麵 (清爽蔬菜湯底)</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kamukura+Dotonbori" target="_blank" class="btn-map">📍 導航去神座拉麵</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section id="day2">
-        <h2 style="margin-top:30px;">🛍️ Day 2：購物與道頓堀</h2>
+            <div class="tab-pane fade" id="pills-d3">
+                <img src="https://placehold.co/600x400/png?text=Retro+Osaka" class="scenic-img" alt="復古大阪">
+                
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <span class="timeline-time">10:00</span> 換飯店
+                        <p>移動到本町站：Osaka View Hotel Honmachi</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Osaka+View+Hotel+Honmachi" target="_blank" class="btn-map">📍 導航去新飯店</a>
+                    </div>
+                </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80" class="card-img" alt="Workman">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-shop">必買</span>WORKMAN Plus (弁天町店)</div>
-                <p>搭地鐵一站到「弁天町」。記得給店員看圖片找店。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=WORKMAN+Plus+Osaka+Bay+Tower" class="btn" target="_blank">📍 導航去 WORKMAN</a>
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">11:00</span> 散步：中崎町
+                        <p>昭和復古咖啡街，適合散步拍照。</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nakazakicho+Station" target="_blank" class="btn-map">📍 導航去中崎町</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">13:00</span> 午餐：天神橋筋商店街
+                        <p>目標：春駒壽司</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Harukoma+Sushi" target="_blank" class="btn-map">📍 導航去春駒壽司</a>
+                        <div class="plan-b">🛡️ 備案：太多人就去吃「壽司郎」。</div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1590253232297-c7a65e75185d?w=600&q=80" class="card-img" alt="Dotonbori">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-spot">經典</span>道頓堀 & 心齋橋</div>
-                <p>跑跑人看板、藥妝店大採購。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Glico+Man+Sign" class="btn" target="_blank">📍 導航去跑跑人看板</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Ichiran+Ramen+Dotonbori" class="btn btn-outline" target="_blank">🍜 晚餐：一蘭拉麵 (獨旅友善)</a>
+            <div class="tab-pane fade" id="pills-d4">
+                <img src="https://placehold.co/600x400/png?text=Osaka+Castle" class="scenic-img" alt="大阪城">
+                
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <span class="timeline-time">09:30</span> 大阪城公園
+                        <p>地鐵森之宮站。散步、看天守閣。</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Park" target="_blank" class="btn-map">📍 導航去大阪城</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">12:00</span> 午餐：船場中心大樓
+                        <p>本町站直結地下街，便宜定食。</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Semba+Center+Building" target="_blank" class="btn-map">📍 導航去船場中心</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">14:00</span> 最後補貨
+                        <p>心齋橋筋：Uniqlo, 大國藥妝。</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Shinsaibashisuji" target="_blank" class="btn-map">📍 導航去心齋橋</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section id="day3">
-        <h2 style="margin-top:30px;">🏯 Day 3：大阪城與通天閣</h2>
-        
-        <div class="highlight-box">
-            🔔 <strong>提醒：</strong> 今天早上要退房，移動到「本町」的新飯店喔！
-        </div>
+            <div class="tab-pane fade" id="pills-d5">
+                <img src="https://placehold.co/600x400/png?text=Go+Home" class="scenic-img" alt="回家">
+                
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <span class="timeline-time">08:20</span> 出發去機場
+                        <p>1. 本町站(綠線) -> 弁天町站。<br>2. 轉 JR 關空快速 (坐前4節)。</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Bentencho+Station" target="_blank" class="btn-map">📍 導航去弁天町站</a>
+                    </div>
+                </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1555400030-e66050630b53?w=600&q=80" class="card-img" alt="Osaka Castle">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-spot">散步</span>大阪城公園</div>
-                <p>不用爬天守閣，在公園散步吃抹茶冰淇淋就很舒服。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Park" class="btn" target="_blank">📍 導航去大阪城</a>
+                <div class="card">
+                    <div class="card-body">
+                        <span class="timeline-time">09:50</span> 抵達關西機場
+                        <p>前往 4 樓出境大廳。長榮航空。</p>
+                    </div>
+                </div>
             </div>
+
         </div>
+    </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1572455027581-9b4865e94b08?w=600&q=80" class="card-img" alt="Shinsekai">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-food">晚餐</span>新世界 & 通天閣</div>
-                <p>這裡晚上很漂亮，必吃「串炸」。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku" class="btn" target="_blank">📍 導航去通天閣</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kushikatsu+Daruma+Shinsekai" class="btn btn-outline" target="_blank">🍢 推薦：達摩串炸</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="day4">
-        <h2 style="margin-top:30px;">☕ Day 4：在地生活體驗</h2>
-
-        <div class="card">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-shop">逛街</span>天神橋筋商店街</div>
-                <p>日本最長的商店街，東西超便宜。推薦吃「中村屋可樂餅」。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Tenjinbashisuji+Shopping+Street" class="btn" target="_blank">📍 導航去商店街</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1554797589-7241bb691973?w=600&q=80" class="card-img" alt="Cafe">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-spot">悠閒</span>中崎町咖啡街</div>
-                <p>老屋改建的文青區，適合一個人喝咖啡寫明信片。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Nakazakicho+Station" class="btn" target="_blank">📍 導航去中崎町</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-content">
-                <div class="card-title"><span class="tag tag-food">超市</span>Life 超市 / Kohyo</div>
-                <p>晚上去飯店附近超市買半價生魚片和草莓！</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Life+Supermarket+Honmachi" class="btn" target="_blank">📍 搜尋附近 Life 超市</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="day5">
-        <h2 style="margin-top:30px;">🛫 Day 5：回家囉</h2>
-        
-        <div class="card" style="border: 2px solid #ef4444;">
-            <div class="card-content">
-                <div class="card-title" style="color:#ef4444;">🚨 關鍵時刻表</div>
-                <ul style="padding-left: 20px;">
-                    <li><strong>08:20</strong> 飯店退房出發</li>
-                    <li><strong>08:30</strong> 進入本町站 (搭御堂筋線)</li>
-                    <li><strong>08:45</strong> 抵達難波站 -> 換南海電鐵</li>
-                    <li><strong>09:50</strong> 務必抵達關西機場</li>
-                    <li><strong>11:50</strong> 飛機起飛</li>
-                </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=Namba+Station+Nankai" class="btn" target="_blank">📍 導航去南海難波站</a>
-            </div>
-        </div>
-    </section>
-
-</div>
-
-<p class="footer-note">旅途愉快！有問題隨時問路人，大家都很親切的。</p>
-
-<script>
-    function copyText(elementId) {
-        var text = document.getElementById(elementId).innerText;
-        navigator.clipboard.writeText(text).then(function() {
-            alert('地址已複製！');
-        }, function(err) {
-            console.error('無法複製', err);
-        });
-    }
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('.nav-link').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-    });
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
