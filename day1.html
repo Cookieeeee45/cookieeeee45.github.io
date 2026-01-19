@@ -127,6 +127,38 @@
             gap: 8px;
         }
 
+        /* --- 交通專用區塊 --- */
+        .transport-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid #00a8ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .transport-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .step-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            padding-top: 2px;
+        }
+
+        .line-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+            font-size: 0.9rem;
+            margin-right: 5px;
+        }
+        .line-green { background-color: #26de81; color: #333; } /* 中央線 */
+
         /* --- Google Maps 按鈕 (超大好按) --- */
         .btn-map {
             display: flex;
@@ -183,76 +215,83 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Station" target="_blank" class="btn-map">
                 <i class="fa-solid fa-location-arrow"></i> 導航：關西機場站
             </a>
-
-            <div class="plan-b-box">
-                <div class="plan-b-title"><i class="fa-solid fa-life-ring"></i> Plan B 機器太多人？</div>
-                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    去旁邊人工櫃台 (Green Window)，手機打字「ICOCA」給店員看。
-                </p>
-            </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">11:30</div>
-            <h2 class="card-title">搭 JR 去大正站</h2>
+            <h2 class="card-title">前往民宿 (九條)</h2>
             
             <div class="card-text">
-                <ul class="check-list">
-                    <li>刷 ICOCA 進 <strong>藍色 JR 改札口</strong>。</li>
-                    <li>搭乘 <strong>關空快速 (Kansai Airport Rapid)</strong>。</li>
-                    <li class="warning-text">⚠️ 絕對要坐第 1 ~ 4 節車廂！</li>
-                    <li>(車廂外有飛機圖案，不用換車直達大正)</li>
-                </ul>
+                <p>我們要去九條站附近的民宿，建議在「弁天町」轉車最方便。</p>
+
+                <div class="transport-box">
+                    <h5 class="fw-bold mb-3">🚀 第一段：JR 關空快速</h5>
+                    <div class="transport-step">
+                        <div class="step-icon">🚃</div>
+                        <div>搭乘 <strong>關空快速 (Kansai Airport Rapid)</strong>。<br><span class="warning-text">⚠️ 務必坐第 1~4 節車廂！</span></div>
+                    </div>
+                    <div class="transport-step">
+                        <div class="step-icon">📍</div>
+                        <div>在<strong>「弁天町」</strong>站下車。</div>
+                    </div>
+                </div>
+
+                <div class="transport-box" style="border-left-color: #26de81;">
+                    <h5 class="fw-bold mb-3">🚀 第二段：轉搭中央線</h5>
+                    <div class="transport-step">
+                        <div class="step-icon">👣</div>
+                        <div>出 JR 閘門，跟著綠色指標走去搭 <strong><span class="line-tag line-green">C</span>中央線 (地鐵)</strong>。</div>
+                    </div>
+                    <div class="transport-step">
+                        <div class="step-icon">🚃</div>
+                        <div>往「本町/森之宮」方向，搭 <strong>1 站</strong>，在<strong>「九條 (C14)」</strong>下車。</div>
+                    </div>
+                </div>
             </div>
             
             <div class="plan-b-box">
-                <div class="plan-b-title"><i class="fa-solid fa-triangle-exclamation"></i> 坐錯車廂怎麼辦？</div>
+                <div class="plan-b-title"><i class="fa-solid fa-lightbulb"></i> 替代方案</div>
                 <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    聽到廣播說要「分離」時，趕快下車，在月台上往前跑到前 4 節。
+                    也可以搭 JR 到「西九條站」，轉「阪神難波線」到九條站，但轉車稍微複雜一點點，推薦走弁天町比較單純。
                 </p>
             </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">13:00</div>
-            <h2 class="card-title">飯店 Check-in</h2>
+            <h2 class="card-title">民宿 Check-in</h2>
             <div class="card-text">
-                <p><strong>Hotel Sobial Osaka Dome Mae</strong></p>
-                <p>從大正站出口走路 1 分鐘就到。先寄放行李。</p>
+                <p><strong>地址：大阪市西區九條南 2-5-8</strong></p>
+                <p>從九條站出口出來，走路約 3-5 分鐘。先去放行李。</p>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Sobial+Osaka+Dome+Mae" target="_blank" class="btn-map">
-                <i class="fa-solid fa-hotel"></i> 導航：Hotel Sobial
+            <a href="https://www.google.com/maps/search/?api=1&query=2-5-8+Kujominami+Osaka" target="_blank" class="btn-map">
+                <i class="fa-solid fa-house-user"></i> 導航：九條南 2-5-8
             </a>
         </div>
 
         <div class="step-card">
             <div class="time-badge">13:30</div>
-            <h2 class="card-title">午餐：大正站周邊</h2>
+            <h2 class="card-title">午餐：九條商店街</h2>
             
             <div class="card-text">
-                <p><strong>Plan A：宮古沖繩麵</strong></p>
-                <p>在高架橋下，找紅燈籠或沖繩獅子。</p>
+                <p>九條有一條很熱鬧的商店街「キララ九条 (Kirara Kujo)」，吃的很多。</p>
+                <p><strong>推薦：</strong></p>
+                <ul class="check-list">
+                    <li><strong>吉野家/松屋</strong>：想簡單吃牛丼的話車站旁就有。</li>
+                    <li><strong>大阪王將</strong>：想吃餃子炒飯的話。</li>
+                </ul>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Miyako+Soba+Taisho" target="_blank" class="btn-map">
-                <i class="fa-solid fa-utensils"></i> 導航：宮古沖繩麵
+            <a href="https://www.google.com/maps/search/?api=1&query=Kujo+Shopping+Street+Osaka" target="_blank" class="btn-map">
+                <i class="fa-solid fa-utensils"></i> 導航：九條商店街
             </a>
-
-            <div class="plan-b-box">
-                <div class="plan-b-title"><i class="fa-solid fa-shield-cat"></i> Plan B 找不到路？</div>
-                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
-                    <strong>餃子的王將</strong> (車站正對面)
-                </p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Gyoza+no+Ohsho+Taisho" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
-                    導航：餃子的王將
-                </a>
-            </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">17:00</div>
-            <h2 class="card-title">前往京瓷巨蛋</h2>
+            <h2 class="card-title">走路去京瓷巨蛋</h2>
             <div class="card-text">
-                <p>從飯店走路約 10 分鐘，或跟著人潮走。</p>
+                <p>你的民宿離巨蛋超級近！</p>
+                <p>走路約 <strong>10 分鐘</strong> 就會看到那顆大飛碟（巨蛋）了。</p>
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka" target="_blank" class="btn-map">
                 <i class="fa-solid fa-map-location-dot"></i> 導航：京瓷巨蛋
@@ -283,7 +322,7 @@
             <div class="time-badge">19:00</div>
             <h2 class="card-title">🎉 活動開始</h2>
             <div class="card-text">
-                <p>請準時入場。結束後人潮眾多，慢慢走回飯店即可。</p>
+                <p>請準時入場。結束後人潮眾多，直接慢慢散步回九條民宿休息即可，不用擠電車！</p>
             </div>
         </div>
 
