@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - 購物血拼</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 全局深色主題 (與 Day 1 一致) --- */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            padding-bottom: 60px;
+        }
+
+        /* --- 頂部導航 --- */
+        .top-nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+        }
+
+        .page-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+        }
+
+        /* --- 內容卡片 --- */
+        .step-card {
+            background: rgba(40, 44, 52, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* 時間標記 */
+        .time-badge {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+        }
+
+        /* 標題與內文 */
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        /* 重點列表 */
+        .check-list {
+            list-style: none;
+            padding: 0;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .check-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #00c6ff;
+        }
+
+        /* --- Plan B 備案區 (醒目黃色) --- */
+        .plan-b-box {
+            background: rgba(243, 156, 18, 0.15);
+            border: 2px solid #f39c12;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .plan-b-title {
+            color: #f39c12;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- Google Maps 按鈕 --- */
+        .btn-map {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background: linear-gradient(135deg, #4285F4, #2b72ee);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn-map:active { transform: scale(0.98); }
+        .btn-map i { margin-right: 10px; font-size: 1.4rem; }
+
+        /* 特殊按鈕顏色 */
+        .btn-shop { background: linear-gradient(135deg, #ff9f43, #ee5253); box-shadow: 0 4px 15px rgba(238, 82, 83, 0.4); }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
+        <h1 class="page-title">Day 2 購物血拼</h1>
+    </div>
+
+    <div class="container mt-4">
+
+        <div class="step-card">
+            <div class="time-badge">09:30</div>
+            <h2 class="card-title">購買地鐵一日券</h2>
+            <div class="card-text">
+                <p><strong>地點：</strong>大正地鐵站售票機 (粉色/紅色)</p>
+                <ul class="check-list">
+                    <li>選「中文」。</li>
+                    <li>點「卡片 (Card)」。</li>
+                    <li>選 <strong>Enjoy Eco Card 平日 820</strong>。</li>
+                    <li>投錢取卡 (今天整天無限搭乘)。</li>
+                </ul>
+            </div>
+            
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B 買不到？</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    沒關係，直接用昨天的 <strong>ICOCA</strong> 刷卡進站，比較貴一點點而已，不用糾結。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">10:00</div>
+            <h2 class="card-title">移動去難波</h2>
+            <div class="card-text">
+                <ul class="check-list">
+                    <li>進大正站。</li>
+                    <li>坐到「心齋橋站」轉車。</li>
+                    <li>轉 <strong>御堂筋線 (紅線)</strong>。</li>
+                    <li>抵達「難波站 (Namba)」。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">10:30</div>
+            <h2 class="card-title">WORKMAN Girl</h2>
+            <div class="card-text">
+                <p><strong>位置：Namba City 南館 2樓</strong></p>
+                <p>必買：防潑水外套、耐磨褲 (便宜又好穿)。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=WORKMAN+Girl+Namba+City" target="_blank" class="btn-map btn-shop">
+                <i class="fa-solid fa-bag-shopping"></i> 導航：WORKMAN Girl
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B</div>
+                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
+                    <strong>Uniqlo / GU</strong> (Namba City 本館 B1)
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Uniqlo+Namba+City" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
+                    導航：Uniqlo
+                </a>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">12:30</div>
+            <h2 class="card-title">午餐：黑門市場</h2>
+            <div class="card-text">
+                <p><strong>Plan A：黑門中川 (超市)</strong></p>
+                <p>走到市場中段，買盒裝生魚片，便宜新鮮。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Nakagawa" target="_blank" class="btn-map">
+                <i class="fa-solid fa-fish"></i> 導航：黑門中川
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B 太多人？</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    吃 <strong>吉野家</strong> 或 <strong>松屋</strong>。市場門口大馬路旁都有，機器點餐。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">14:30</div>
+            <h2 class="card-title">千日前道具街</h2>
+            <div class="card-text">
+                <p>看日本廚具、食物模型，很有趣的街道。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street" target="_blank" class="btn-map btn-shop">
+                <i class="fa-solid fa-kitchen-set"></i> 導航：道具街
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B 沒興趣？</div>
+                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
+                    去逛 <strong>Bic Camera</strong> (電器/玩具)。
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Bic+Camera+Namba" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
+                    導航：Bic Camera
+                </a>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">16:30</div>
+            <h2 class="card-title">心齋橋 藥妝採購</h2>
+            <div class="card-text">
+                <p><strong>Plan A：大國藥妝 (Daikoku)</strong></p>
+                <p>通常有中文店員，直接秀圖片給他找。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Daikoku+Drug+Ultra+Shinsaibashi" target="_blank" class="btn-map btn-shop">
+                <i class="fa-solid fa-pills"></i> 導航：大國藥妝
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B</div>
+                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
+                    <strong>松本清 (Matsumoto Kiyoshi)</strong>：黃色招牌，明亮好找。
+                </p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">19:00</div>
+            <h2 class="card-title">晚餐：道頓堀</h2>
+            <div class="card-text">
+                <p><strong>Plan A：神座拉麵</strong></p>
+                <p>蔬菜湯底，清爽不油膩。</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Kamukura" target="_blank" class="btn-map">
+                <i class="fa-solid fa-bowl-food"></i> 導航：神座拉麵
+            </a>
+
+            <div class="plan-b-box">
+                <div class="plan-b-title">🛡️ Plan B (社恐救星)</div>
+                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
+                    <strong>一蘭拉麵</strong>：一人一格座位，免講話。
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ichiran+Dotonbori" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
+                    導航：一蘭拉麵
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
