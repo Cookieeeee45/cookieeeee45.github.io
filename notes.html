@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>旅遊備忘錄</title>
+    <title>旅遊備忘錄 & 口袋名單</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
@@ -71,6 +71,44 @@
             padding-bottom: 10px;
         }
 
+        /* --- 口袋名單樣式 --- */
+        .spot-group-title {
+            color: #00c6ff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-left: 4px solid #00c6ff;
+            padding-left: 10px;
+        }
+
+        .spot-btn {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+        }
+        .spot-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #ffa502;
+        }
+        .spot-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        .spot-info { flex-grow: 1; }
+        .spot-name { font-size: 1.1rem; font-weight: bold; color: #fff; display: block; }
+        .spot-desc { font-size: 0.9rem; color: #aaa; }
+        .spot-arrow { color: #ffa502; }
+
         /* --- 檢查清單 --- */
         .check-list { list-style: none; padding: 0; }
         .check-list li {
@@ -86,7 +124,7 @@
             font-size: 1.4rem;
         }
 
-        /* --- 緊急電話顯示框 (純展示，不可點) --- */
+        /* --- 緊急電話 --- */
         .number-display {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
@@ -102,32 +140,16 @@
             color: #ff4757;
             letter-spacing: 2px;
         }
-        .number-label {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-        .safe-hint {
-            font-size: 0.8rem;
-            color: #777;
-            margin-top: 5px;
-        }
-
-        /* --- 大阪辦事處按鈕 --- */
+        .number-label { color: #aaa; font-size: 0.9rem; margin-bottom: 5px; }
+        
         .btn-office {
-            display: block;
-            width: 100%;
+            display: block; width: 100%;
             background: linear-gradient(135deg, #0984e3, #74b9ff);
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.1rem;
+            color: white; text-decoration: none;
+            padding: 15px; border-radius: 12px;
+            text-align: center; font-weight: bold; font-size: 1.1rem;
             box-shadow: 0 4px 15px rgba(9, 132, 227, 0.4);
         }
-
     </style>
 </head>
 <body>
@@ -138,6 +160,62 @@
     </div>
 
     <div class="container mt-4">
+
+        <div class="section-card" style="border-color: #00c6ff;">
+            <div class="section-title" style="color: #00c6ff;">
+                <i class="fa-solid fa-star"></i> 住宿周邊口袋名單
+            </div>
+            <p class="text-white-50 small mb-3">這些都是在你住宿附近，我有空沒事可以去晃晃的在地好店。</p>
+
+            <div class="spot-group-title">📍 九條區 (Day 1-2 附近)</div>
+            
+            <a href="https://www.google.com/maps/search/?api=1&query=Super+Tamade+Kujo" target="_blank" class="spot-btn">
+                <div class="spot-icon">🛒</div>
+                <div class="spot-info">
+                    <span class="spot-name">Super Tamade (玉出超市)</span>
+                    <span class="spot-desc">大阪傳奇！霓虹燈超亮，東西超便宜。</span>
+                </div>
+                <i class="fa-solid fa-location-arrow spot-arrow"></i>
+            </a>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Ajigawa+Tunnel" target="_blank" class="spot-btn">
+                <div class="spot-icon">🚇</div>
+                <div class="spot-info">
+                    <span class="spot-name">安治川隧道</span>
+                    <span class="spot-desc">在河底的隧道！搭電梯下去，很酷的在地體驗。</span>
+                </div>
+                <i class="fa-solid fa-location-arrow spot-arrow"></i>
+            </a>
+
+            <div class="spot-group-title" style="border-color: #ffa502; color: #ffa502;">📍 本町區 (Day 3-5 附近)</div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Semba+Center+Building" target="_blank" class="spot-btn">
+                <div class="spot-icon">🏢</div>
+                <div class="spot-info">
+                    <span class="spot-name">船場 Center Building</span>
+                    <span class="spot-desc">高架橋下的超長商店街，B1/B2 充滿便宜美食。</span>
+                </div>
+                <i class="fa-solid fa-location-arrow spot-arrow"></i>
+            </a>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Utsubo+Park" target="_blank" class="spot-btn">
+                <div class="spot-icon">🌳</div>
+                <div class="spot-info">
+                    <span class="spot-name">靱公園 (Utsubo Park)</span>
+                    <span class="spot-desc">城市綠洲，有漂亮的玫瑰園，適合散步發呆。</span>
+                </div>
+                <i class="fa-solid fa-location-arrow spot-arrow"></i>
+            </a>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Namba+Shrine" target="_blank" class="spot-btn">
+                <div class="spot-icon">⛩️</div>
+                <div class="spot-info">
+                    <span class="spot-name">難波神社 (Namba Shrine)</span>
+                    <span class="spot-desc">就在本町大馬路旁，祈求好運與平安。</span>
+                </div>
+                <i class="fa-solid fa-location-arrow spot-arrow"></i>
+            </a>
+        </div>
 
         <div class="section-card">
             <div class="section-title"><i class="fa-solid fa-suitcase"></i> 出門前檢查</div>
@@ -199,10 +277,8 @@
 
     <script>
         function callOffice() {
-            // 跳出確認視窗
             var result = confirm("【防誤觸確認】\n\n您確定要撥打給「台北駐大阪辦事處」嗎？");
             if (result) {
-                // 如果按確定，才撥打
                 window.location.href = "tel:+81-6-6227-8623";
             }
         }
