@@ -23,93 +23,97 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px 20px 30px;
+            padding: 60px 20px 40px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         .hero-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 800;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(0, 198, 255, 0.7);
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.7), 0 0 20px rgba(0, 198, 255, 0.5);
             background: linear-gradient(to right, #00c6ff, #0072ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .hero-date {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 500;
             background: rgba(0, 0, 0, 0.3);
-            padding: 5px 15px;
+            padding: 8px 20px;
             border-radius: 50px;
             display: inline-block;
             border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* --- 上方選單卡片 --- */
+        /* --- 上半部：大按鈕選單 (保持原樣) --- */
         .menu-card {
             display: flex;
             align-items: center;
             background: rgba(40, 44, 52, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 15px;
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 20px;
             text-decoration: none;
             color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .menu-card:active { transform: scale(0.98); background: rgba(50, 54, 62, 0.9); }
 
         .num-badge {
-            width: 50px; height: 50px;
+            width: 70px; height: 70px;
             background: linear-gradient(135deg, #00c6ff, #0072ff);
-            font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 800;
-            border-radius: 15px; display: flex; justify-content: center; align-items: center;
-            margin-right: 15px; flex-shrink: 0;
-            box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+            font-size: 2rem; font-family: 'Montserrat', sans-serif; font-weight: 800;
+            border-radius: 20px; display: flex; justify-content: center; align-items: center;
+            margin-right: 25px; flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.6);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .bg-help { background: linear-gradient(135deg, #ff0844, #ffb199); box-shadow: 0 0 15px rgba(255, 8, 68, 0.5); }
-        .bg-note { background: linear-gradient(135deg, #fddb92, #d1fdff); box-shadow: 0 0 15px rgba(253, 219, 146, 0.5); color: #333; }
+        .bg-help { background: linear-gradient(135deg, #ff0844, #ffb199); box-shadow: 0 0 20px rgba(255, 8, 68, 0.6); }
+        .bg-note { background: linear-gradient(135deg, #fddb92, #d1fdff); box-shadow: 0 0 20px rgba(253, 219, 146, 0.6); color: #333; text-shadow: none;}
 
-        .card-text h2 { font-size: 1.3rem; font-weight: 700; margin: 0; color: #fff; }
-        .card-text p { font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin: 0; }
-        .arrow-icon { margin-left: auto; color: rgba(255, 255, 255, 0.3); font-size: 1.2rem; }
-        .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); margin: 30px 20px; }
+        .card-text h2 { font-size: 1.6rem; font-weight: 700; margin: 0 0 8px 0; color: #fff; }
+        .card-text p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.7); margin: 0; font-weight: 500; }
+        .arrow-icon { margin-left: auto; color: rgba(255, 255, 255, 0.3); font-size: 1.8rem; }
+        
+        .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent); margin: 40px 20px; }
 
         /* =========================================
-           新增區塊：直式視覺攻略 (Left Text, Right Image)
+           下半部：新增的圖文區塊 (直式排列)
         ========================================= */
-        .visual-section-title {
-            font-size: 1.3rem;
+        .visual-header {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin: 0 0 20px 10px;
+            margin: 0 0 25px 10px;
             padding-left: 15px;
-            border-left: 4px solid #00c6ff;
-            color: #dfe6e9;
+            border-left: 5px solid #00c6ff;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
         }
 
-        /* 單張圖文卡片 */
+        /* 圖文卡片 (單張) */
         .visual-row {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             background: rgba(255, 255, 255, 0.05); /* 極淡背景 */
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            margin-bottom: 25px; /* 卡片間距大一點，不擠 */
-            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 25px; /* 卡片間距 */
+            padding: 20px;
             text-decoration: none;
-            transition: all 0.2s ease;
-            padding: 15px; /* 內距 */
+            transition: transform 0.2s;
         }
 
         .visual-row:active {
@@ -117,45 +121,47 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 左側文字區 */
+        /* 左側：文字區 (標題小一點) */
         .visual-text {
-            flex: 1; /* 佔據剩餘空間 */
+            flex: 1;
             padding-right: 15px;
         }
 
-        .v-date {
+        .v-day {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: #00c6ff;
             font-weight: 700;
-            margin-bottom: 4px;
             letter-spacing: 1px;
+            margin-bottom: 5px;
         }
 
         .v-title {
-            font-size: 1.1rem; /* 字體不用太大，因為上面有按鈕了 */
+            font-size: 1.2rem; /* 字體適中 */
             font-weight: 700;
             color: #fff;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        /* 右側圖片區 (16:9) */
-        .visual-img-wrapper {
+        /* 右側：圖片區 (16:9) */
+        .visual-img-box {
             width: 160px; /* 固定寬度 */
-            aspect-ratio: 16 / 9; /* 強制 16:9 */
+            aspect-ratio: 16 / 9; /* 鎖定 16:9 比例 */
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            flex-shrink: 0; /* 防止圖片被擠壓 */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.2);
+            flex-shrink: 0;
+            background: #000;
         }
 
         .visual-img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 確保圖片填滿且不變形 */
+            object-fit: cover; /* 填滿不變形 */
+            transition: transform 0.5s;
         }
-
+        
     </style>
 </head>
 <body>
@@ -165,13 +171,13 @@
         <div class="hero-date">2026.01.21 — 01.25</div>
     </div>
 
-    <div class="container" style="max-width: 600px;">
+    <div class="container" style="max-width: 700px;">
 
         <a href="day1.html" class="menu-card">
             <div class="num-badge">1</div>
             <div class="card-text">
-                <h2>Day 1</h2>
-                <p>抵達大阪</p>
+                <h2>Day 1 抵達大阪</h2>
+                <p>關西機場 • 買 ICOCA • 巨蛋</p>
             </div>
             <i class="fa-solid fa-chevron-right arrow-icon"></i>
         </a>
@@ -179,8 +185,8 @@
         <a href="day2.html" class="menu-card">
             <div class="num-badge">2</div>
             <div class="card-text">
-                <h2>Day 2</h2>
-                <p>購物血拼</p>
+                <h2>Day 2 購物血拼</h2>
+                <p>Workman • 難波 • 藥妝</p>
             </div>
             <i class="fa-solid fa-chevron-right arrow-icon"></i>
         </a>
@@ -188,8 +194,8 @@
         <a href="day3.html" class="menu-card">
             <div class="num-badge">3</div>
             <div class="card-text">
-                <h2>Day 3</h2>
-                <p>復古散策</p>
+                <h2>Day 3 復古散策</h2>
+                <p>換飯店 • 中崎町 • 居酒屋</p>
             </div>
             <i class="fa-solid fa-chevron-right arrow-icon"></i>
         </a>
@@ -197,8 +203,8 @@
         <a href="day4.html" class="menu-card">
             <div class="num-badge">4</div>
             <div class="card-text">
-                <h2>Day 4</h2>
-                <p>大阪城</p>
+                <h2>Day 4 大阪城</h2>
+                <p>公園漫遊 • 超市補貨</p>
             </div>
             <i class="fa-solid fa-chevron-right arrow-icon"></i>
         </a>
@@ -206,8 +212,8 @@
         <a href="day5.html" class="menu-card">
             <div class="num-badge">5</div>
             <div class="card-text">
-                <h2>Day 5</h2>
-                <p>回家</p>
+                <h2>Day 5 回家</h2>
+                <p>弁天町轉車 • 關西機場</p>
             </div>
             <i class="fa-solid fa-chevron-right arrow-icon"></i>
         </a>
@@ -218,7 +224,7 @@
             <div class="num-badge bg-help"><i class="fa-solid fa-life-ring"></i></div>
             <div class="card-text">
                 <h2 style="color: #ff4757;">緊急救命卡</h2>
-                <p>迷路求助 • 翻譯</p>
+                <p>迷路求助 • Google 翻譯</p>
             </div>
             <i class="fa-solid fa-chevron-right arrow-icon"></i>
         </a>
@@ -227,68 +233,68 @@
             <div class="num-badge bg-note"><i class="fa-solid fa-clipboard-list"></i></div>
             <div class="card-text">
                 <h2 style="color: #f39c12;">旅遊備忘錄</h2>
-                <p>檢查清單 • 提醒</p>
+                <p>檢查清單 • 緊急電話</p>
             </div>
             <i class="fa-solid fa-chevron-right arrow-icon"></i>
         </a>
         
         <div class="divider"></div>
 
-        <div class="visual-section-title">
-            <i class="fa-solid fa-images"></i> 旅程總覽 (圖文版)
+        <div class="visual-header">
+            <i class="fa-solid fa-camera"></i> 行程縮圖預覽
         </div>
 
         <a href="day1.html" class="visual-row">
             <div class="visual-text">
-                <div class="v-date">DAY 1</div>
+                <div class="v-day">DAY 01</div>
                 <div class="v-title">機場買票<br>巨蛋活動</div>
             </div>
-            <div class="visual-img-wrapper">
+            <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/0f0c29/FFF?text=Day+1" class="visual-img">
             </div>
         </a>
 
         <a href="day2.html" class="visual-row">
             <div class="visual-text">
-                <div class="v-date">DAY 2</div>
-                <div class="v-title">Workman<br>黑門市場</div>
+                <div class="v-day">DAY 02</div>
+                <div class="v-title">難波 Workman<br>黑門市場熟食</div>
             </div>
-            <div class="visual-img-wrapper">
+            <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/302b63/FFF?text=Day+2" class="visual-img">
             </div>
         </a>
 
         <a href="day3.html" class="visual-row">
             <div class="visual-text">
-                <div class="v-date">DAY 3</div>
+                <div class="v-day">DAY 03</div>
                 <div class="v-title">中崎町散步<br>天婦羅定食</div>
             </div>
-            <div class="visual-img-wrapper">
+            <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/24243e/FFF?text=Day+3" class="visual-img">
             </div>
         </a>
 
         <a href="day4.html" class="visual-row">
             <div class="visual-text">
-                <div class="v-date">DAY 4</div>
+                <div class="v-day">DAY 04</div>
                 <div class="v-title">大阪城公園<br>超市採買</div>
             </div>
-            <div class="visual-img-wrapper">
+            <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/4b6cb7/FFF?text=Day+4" class="visual-img">
             </div>
         </a>
 
         <a href="day5.html" class="visual-row">
             <div class="visual-text">
-                <div class="v-date">DAY 5</div>
+                <div class="v-day">DAY 05</div>
                 <div class="v-title">弁天町轉車<br>前往機場</div>
             </div>
-            <div class="visual-img-wrapper">
+            <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/182848/FFF?text=Day+5" class="visual-img">
             </div>
         </a>
 
-    </div> <div style="height: 50px;"></div>
+    </div>
 
 </body>
 </html>
