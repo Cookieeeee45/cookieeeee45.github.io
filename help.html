@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>緊急救命卡</title>
+    <title>緊急求助神器</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background: linear-gradient(135deg, #2c3e50, #000000); /* 深色背景 */
+            background: linear-gradient(135deg, #1e272e, #000000);
             color: #fff;
             padding-bottom: 60px;
         }
@@ -23,6 +23,9 @@
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .back-btn {
@@ -41,53 +44,82 @@
             text-align: center;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ff4757; /* 紅色標題 */
+            color: #ff4757;
             margin: 0;
         }
 
-        /* --- 日文卡片 --- */
+        /* --- 日文卡片列表樣式 --- */
         .jp-card {
-            background: #fff;
-            color: #333;
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-left: 10px solid #ff4757; /* 紅色邊條 */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.95);
+            color: #2d3436;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 8px solid #ff4757; /* 預設紅色 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer; /* 讓鼠標變手指 */
+            transition: transform 0.1s;
+            position: relative;
         }
+
+        .jp-card:active { transform: scale(0.98); background: #fff; }
 
         .jp-label {
             font-size: 1rem;
-            color: #777;
+            color: #636e72;
             margin-bottom: 5px;
+            font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
-        .jp-text {
-            font-size: 1.8rem; /* 字體超大 */
+        .jp-preview {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2d3436;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tap-hint {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b2bec3;
+            font-size: 1.2rem;
+        }
+
+        /* 不同類型的顏色 */
+        .type-danger { border-left-color: #ff4757; } /* 緊急 */
+        .type-info { border-left-color: #0984e3; }   /* 詢問 */
+        .type-shop { border-left-color: #ffa502; }   /* 購物/吃 */
+
+        /* --- 放大後的 Modal 樣式 --- */
+        .modal-content {
+            background-color: #2d3436;
+            color: white;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .modal-header { border-bottom: none; justify-content: flex-end; }
+        .btn-close-white { filter: invert(1); }
+
+        .zoom-japanese {
+            font-size: 2.5rem; /* 放大後的超大字 */
             font-weight: 900;
             line-height: 1.4;
-            color: #2d3436;
+            margin: 20px 0;
+            color: #fffa65; /* 亮黃色字，黑底超清楚 */
         }
 
-        /* --- 住宿資訊卡 --- */
-        .hotel-card {
-            background: rgba(40, 44, 52, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 20px;
-            margin-top: 30px;
-        }
-
-        .hotel-title {
-            color: #00a8ff;
+        .zoom-chinese {
             font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 5px;
+            color: #dfe6e9;
+            margin-bottom: 30px;
         }
 
         /* --- 翻譯按鈕 --- */
@@ -106,58 +138,197 @@
             margin-top: 20px;
             box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
         }
+        
+        /* 住宿卡 */
+        .hotel-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
     </style>
 </head>
 <body>
 
     <div class="top-nav">
         <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
-        <h1 class="page-title">求助與住宿</h1>
+        <h1 class="page-title">求助神器</h1>
     </div>
 
     <div class="container mt-4">
+        
+        <p class="text-center text-white-50 mb-4">
+            <i class="fa-solid fa-hand-pointer"></i> 點擊句子可放大全螢幕
+        </p>
 
-        <div class="alert alert-danger fw-bold text-center" role="alert">
-            <i class="fa-solid fa-mobile-screen"></i> 請直接將畫面給日本人看
+        <div class="jp-card type-danger" data-bs-toggle="modal" data-bs-target="#modalLost">
+            <div class="jp-label"><i class="fa-solid fa-compass"></i> 我迷路了</div>
+            <div class="jp-preview">すみません、道に迷いました...</div>
+            <i class="fa-solid fa-expand tap-hint"></i>
         </div>
 
-        <div class="jp-card">
-            <div class="jp-label"><i class="fa-solid fa-person-circle-question"></i> 我迷路了...</div>
-            <div class="jp-text">すみません、<br>道に迷いました。</div>
+        <div class="jp-card type-danger" data-bs-toggle="modal" data-bs-target="#modalMap">
+            <div class="jp-label"><i class="fa-solid fa-map-location-dot"></i> 想去這裡 (指地圖)</div>
+            <div class="jp-preview">ここに行きたいです。</div>
+            <i class="fa-solid fa-expand tap-hint"></i>
         </div>
 
-        <div class="jp-card">
-            <div class="jp-label"><i class="fa-solid fa-map-location-dot"></i> 我想去這裡 (手指地圖)</div>
-            <div class="jp-text">ここに行きたいです。</div>
+        <div class="jp-card type-info" data-bs-toggle="modal" data-bs-target="#modalToilet">
+            <div class="jp-label"><i class="fa-solid fa-restroom"></i> 廁所在哪裡？</div>
+            <div class="jp-preview">トイレはどこですか？</div>
+            <i class="fa-solid fa-expand tap-hint"></i>
         </div>
 
-        <div class="jp-card">
+        <div class="jp-card type-info" data-bs-toggle="modal" data-bs-target="#modalTrain">
             <div class="jp-label"><i class="fa-solid fa-train"></i> 這台車去機場嗎？</div>
-            <div class="jp-text">この電車は<br>関西空港に行きますか？</div>
+            <div class="jp-preview">この電車は関西空港に行きますか？</div>
+            <i class="fa-solid fa-expand tap-hint"></i>
         </div>
 
-        <div class="jp-card">
-            <div class="jp-label"><i class="fa-solid fa-utensils"></i> 我要這個 (手指菜單)</div>
-            <div class="jp-text">これをください。</div>
+        <div class="jp-card type-shop" data-bs-toggle="modal" data-bs-target="#modalMenu">
+            <div class="jp-label"><i class="fa-solid fa-book-open"></i> 有英文菜單嗎？</div>
+            <div class="jp-preview">英語のメニューはありますか？</div>
+            <i class="fa-solid fa-expand tap-hint"></i>
+        </div>
+
+        <div class="jp-card type-shop" data-bs-toggle="modal" data-bs-target="#modalOrder">
+            <div class="jp-label"><i class="fa-solid fa-utensils"></i> 我要這個 (指菜單)</div>
+            <div class="jp-preview">これをください。</div>
+            <i class="fa-solid fa-expand tap-hint"></i>
+        </div>
+
+        <div class="jp-card type-shop" data-bs-toggle="modal" data-bs-target="#modalCheck">
+            <div class="jp-label"><i class="fa-solid fa-file-invoice-dollar"></i> 請幫我結帳</div>
+            <div class="jp-preview">お会計をお願いします。</div>
+            <i class="fa-solid fa-expand tap-hint"></i>
+        </div>
+
+        <div class="jp-card type-shop" data-bs-toggle="modal" data-bs-target="#modalTax">
+            <div class="jp-label"><i class="fa-solid fa-bag-shopping"></i> 可以免稅嗎？</div>
+            <div class="jp-preview">免税（Tax Free）できますか？</div>
+            <i class="fa-solid fa-expand tap-hint"></i>
         </div>
 
         <a href="https://translate.google.com/?sl=ja&tl=zh-TW&op=translate" target="_blank" class="btn-translate">
             <i class="fa-solid fa-language me-2"></i> 打開 Google 翻譯
         </a>
 
-        <div class="hotel-card">
-            <h3 class="text-white fw-bold mb-3"><i class="fa-solid fa-taxi"></i> 給計程車司機看</h3>
-            
-            <div class="hotel-title">1/21 - 1/22 (前兩晚)</div>
-            <p class="mb-1 fw-bold fs-5">Hotel Sobial Osaka Dome Mae</p>
-            <p class="text-white-50">大阪市港区波除2-5-8</p>
-            
-            <div class="hotel-title mt-3">1/23 - 1/25 (後兩晚)</div>
-            <p class="mb-1 fw-bold fs-5">Osaka View Hotel Honmachi</p>
-            <p class="text-white-50">大阪市中央区本町4-5-2</p>
+        <div class="hotel-box">
+            <h5 class="text-white mb-3"><i class="fa-solid fa-bed"></i> 住宿資訊 (給司機看)</h5>
+            <div class="mb-3">
+                <small class="text-info">1/21 - 1/22</small><br>
+                <strong>Hotel Sobial Osaka Dome Mae</strong><br>
+                <span class="text-white-50">大阪市港区波除2-5-8</span>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.3);">
+            <div>
+                <small class="text-info">1/23 - 1/25</small><br>
+                <strong>Osaka View Hotel Honmachi</strong><br>
+                <span class="text-white-50">大阪市中央区本町4-5-2</span>
+            </div>
         </div>
 
     </div>
 
+    <div class="modal fade" id="modalLost" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="zoom-chinese">不好意思，我迷路了</div>
+                    <div class="zoom-japanese">すみません、<br>道に迷いました</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalMap" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <div class="zoom-chinese">我想去這裡 (指地圖)</div>
+                    <div class="zoom-japanese">ここに行きたいです</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalToilet" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <div class="zoom-chinese">請問廁所在哪裡？</div>
+                    <div class="zoom-japanese">トイレは<br>どこですか？</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalTrain" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <div class="zoom-chinese">這台電車去關西機場嗎？</div>
+                    <div class="zoom-japanese">この電車は<br>関西空港に行きますか？</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalMenu" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <div class="zoom-chinese">請問有英文菜單嗎？</div>
+                    <div class="zoom-japanese">英語のメニューは<br>ありますか？</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalOrder" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <div class="zoom-chinese">我要這個 (指菜單)</div>
+                    <div class="zoom-japanese">これをください</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCheck" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <div class="zoom-chinese">請幫我結帳</div>
+                    <div class="zoom-japanese">お会計を<br>お願いします</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalTax" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <div class="zoom-chinese">可以免稅嗎？</div>
+                    <div class="zoom-japanese">免税（Tax Free）<br>できますか？</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
