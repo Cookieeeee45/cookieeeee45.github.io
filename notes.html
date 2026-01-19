@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅遊備忘錄</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #1e272e, #485460);
+            color: #fff;
+            padding-bottom: 60px;
+        }
+
+        .top-nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+        }
+
+        .page-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffa502; /* 黃色標題 */
+            margin: 0;
+        }
+
+        /* --- 備忘區塊 --- */
+        .note-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .note-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffa502;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+        }
+        .check-list li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        .check-list li i {
+            color: #2ed573;
+            margin-right: 10px;
+        }
+
+        /* --- 緊急聯絡 --- */
+        .emergency-box {
+            border: 2px solid #ff4757;
+            background: rgba(255, 71, 87, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .tel-link {
+            display: block;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
+        <h1 class="page-title">備忘錄</h1>
+    </div>
+
+    <div class="container mt-4">
+
+        <div class="note-box">
+            <div class="note-header"><i class="fa-solid fa-suitcase"></i> 每天出門檢查</div>
+            <ul class="check-list">
+                <li><i class="fa-solid fa-check"></i> 護照 (隨身帶著，免稅要用)</li>
+                <li><i class="fa-solid fa-check"></i> 錢包 (現金 + 信用卡)</li>
+                <li><i class="fa-solid fa-check"></i> ICOCA 卡</li>
+                <li><i class="fa-solid fa-check"></i> 手機 + 行動電源</li>
+                <li><i class="fa-solid fa-check"></i> 網卡/漫遊確認開啟</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <div class="note-header"><i class="fa-solid fa-lightbulb"></i> 旅遊小提醒</div>
+            <ul class="check-list">
+                <li><i class="fa-solid fa-info-circle"></i> 日本電壓 100V (台灣插頭可直接用)</li>
+                <li><i class="fa-solid fa-info-circle"></i> 走路靠左邊</li>
+                <li><i class="fa-solid fa-info-circle"></i> 地鐵車廂內保持安靜</li>
+                <li><i class="fa-solid fa-info-circle"></i> 垃圾請帶回飯店丟</li>
+            </ul>
+        </div>
+
+        <div class="emergency-box">
+            <h4 class="text-danger fw-bold mb-3"><i class="fa-solid fa-phone-volume"></i> 緊急聯絡</h4>
+            
+            <p class="mb-1"><strong>👮 報警 (Police)</strong></p>
+            <a href="tel:110" class="tel-link">110</a>
+            
+            <p class="mb-1 mt-3"><strong>🚑 救護車 (Ambulance)</strong></p>
+            <a href="tel:119" class="tel-link">119</a>
+
+            <hr class="border-danger">
+            
+            <p class="mb-1"><strong>🇹🇼 台北駐大阪辦事處</strong></p>
+            <p class="small text-white-50">護照遺失等緊急協助</p>
+            <a href="tel:+81-6-6227-8623" class="tel-link">+81-6-6227-8623</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
