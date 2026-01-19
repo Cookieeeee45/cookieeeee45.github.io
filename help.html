@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>緊急救命卡</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #000000); /* 深色背景 */
+            color: #fff;
+            padding-bottom: 60px;
+        }
+
+        .top-nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+        }
+
+        .page-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff4757; /* 紅色標題 */
+            margin: 0;
+        }
+
+        /* --- 日文卡片 --- */
+        .jp-card {
+            background: #fff;
+            color: #333;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 10px solid #ff4757; /* 紅色邊條 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .jp-label {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .jp-text {
+            font-size: 1.8rem; /* 字體超大 */
+            font-weight: 900;
+            line-height: 1.4;
+            color: #2d3436;
+        }
+
+        /* --- 住宿資訊卡 --- */
+        .hotel-card {
+            background: rgba(40, 44, 52, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .hotel-title {
+            color: #00a8ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+        }
+
+        /* --- 翻譯按鈕 --- */
+        .btn-translate {
+            background: linear-gradient(135deg, #4285F4, #2b72ee);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 15px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
+        <h1 class="page-title">求助與住宿</h1>
+    </div>
+
+    <div class="container mt-4">
+
+        <div class="alert alert-danger fw-bold text-center" role="alert">
+            <i class="fa-solid fa-mobile-screen"></i> 請直接將畫面給日本人看
+        </div>
+
+        <div class="jp-card">
+            <div class="jp-label"><i class="fa-solid fa-person-circle-question"></i> 我迷路了...</div>
+            <div class="jp-text">すみません、<br>道に迷いました。</div>
+        </div>
+
+        <div class="jp-card">
+            <div class="jp-label"><i class="fa-solid fa-map-location-dot"></i> 我想去這裡 (手指地圖)</div>
+            <div class="jp-text">ここに行きたいです。</div>
+        </div>
+
+        <div class="jp-card">
+            <div class="jp-label"><i class="fa-solid fa-train"></i> 這台車去機場嗎？</div>
+            <div class="jp-text">この電車は<br>関西空港に行きますか？</div>
+        </div>
+
+        <div class="jp-card">
+            <div class="jp-label"><i class="fa-solid fa-utensils"></i> 我要這個 (手指菜單)</div>
+            <div class="jp-text">これをください。</div>
+        </div>
+
+        <a href="https://translate.google.com/?sl=ja&tl=zh-TW&op=translate" target="_blank" class="btn-translate">
+            <i class="fa-solid fa-language me-2"></i> 打開 Google 翻譯
+        </a>
+
+        <div class="hotel-card">
+            <h3 class="text-white fw-bold mb-3"><i class="fa-solid fa-taxi"></i> 給計程車司機看</h3>
+            
+            <div class="hotel-title">1/21 - 1/22 (前兩晚)</div>
+            <p class="mb-1 fw-bold fs-5">Hotel Sobial Osaka Dome Mae</p>
+            <p class="text-white-50">大阪市港区波除2-5-8</p>
+            
+            <div class="hotel-title mt-3">1/23 - 1/25 (後兩晚)</div>
+            <p class="mb-1 fw-bold fs-5">Osaka View Hotel Honmachi</p>
+            <p class="text-white-50">大阪市中央区本町4-5-2</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
