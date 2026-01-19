@@ -90,7 +90,7 @@
         .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent); margin: 40px 20px; }
 
         /* =========================================
-           下半部：純展示圖文區 (不能點擊)
+           下半部：純展示圖文區 (簡約版)
         ========================================= */
         .visual-header {
             font-size: 1.5rem;
@@ -102,7 +102,7 @@
             text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
         }
 
-        /* 展示卡片 (無 Hover 效果，無指標) */
+        /* 展示卡片 */
         .visual-display-card {
             display: flex;
             justify-content: space-between;
@@ -111,35 +111,29 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             margin-bottom: 25px;
-            padding: 20px;
-            cursor: default; /* 滑鼠不會變手指 */
+            padding: 15px; /* 縮小一點邊距 */
+            cursor: default;
         }
 
-        /* 左側文字 */
+        /* 左側文字 (只剩 DAY) */
         .visual-text {
             flex: 1;
-            padding-right: 15px;
+            padding-left: 10px;
         }
 
-        .v-day {
+        .v-day-big {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            color: #00c6ff;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .v-title {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 2.2rem; /* 字體加大 */
             color: #fff;
-            line-height: 1.4;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 198, 255, 0.8); /* 強烈霓虹光 */
+            margin: 0;
         }
 
         /* 右側圖片框 (16:9) */
         .visual-img-box {
-            width: 160px;
+            width: 180px; /* 圖片稍微加大 */
             aspect-ratio: 16 / 9;
             border-radius: 12px;
             overflow: hidden;
@@ -239,8 +233,7 @@
 
         <div class="visual-display-card">
             <div class="visual-text">
-                <div class="v-day">DAY 01</div>
-                <div class="v-title">機場買票<br>巨蛋活動</div>
+                <div class="v-day-big">DAY 01</div>
             </div>
             <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/0f0c29/FFF?text=Day+1" class="visual-img">
@@ -249,8 +242,7 @@
 
         <div class="visual-display-card">
             <div class="visual-text">
-                <div class="v-day">DAY 02</div>
-                <div class="v-title">難波 Workman<br>黑門市場熟食</div>
+                <div class="v-day-big">DAY 02</div>
             </div>
             <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/302b63/FFF?text=Day+2" class="visual-img">
@@ -259,8 +251,7 @@
 
         <div class="visual-display-card">
             <div class="visual-text">
-                <div class="v-day">DAY 03</div>
-                <div class="v-title">中崎町散步<br>天婦羅定食</div>
+                <div class="v-day-big">DAY 03</div>
             </div>
             <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/24243e/FFF?text=Day+3" class="visual-img">
@@ -269,8 +260,7 @@
 
         <div class="visual-display-card">
             <div class="visual-text">
-                <div class="v-day">DAY 04</div>
-                <div class="v-title">大阪城公園<br>超市採買</div>
+                <div class="v-day-big">DAY 04</div>
             </div>
             <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/4b6cb7/FFF?text=Day+4" class="visual-img">
@@ -279,8 +269,7 @@
 
         <div class="visual-display-card">
             <div class="visual-text">
-                <div class="v-day">DAY 05</div>
-                <div class="v-title">弁天町轉車<br>前往機場</div>
+                <div class="v-day-big">DAY 05</div>
             </div>
             <div class="visual-img-box">
                 <img src="https://placehold.co/320x180/182848/FFF?text=Day+5" class="visual-img">
