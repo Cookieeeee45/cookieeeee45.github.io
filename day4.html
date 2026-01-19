@@ -3,68 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 4 - 大阪城與補貨</title>
+    <title>Day 4 - 大阪城與在地靈魂美食</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 全局深色主題 --- */
+        /* --- 全局設定 (配合 Index 風格) --- */
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: #fff;
+            min-height: 100vh;
             padding-bottom: 60px;
         }
 
-        .top-nav {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 15px 20px;
+        /* --- Header --- */
+        .hero-header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            display: flex;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
 
         .back-btn {
-            color: #fff;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: 1.2rem;
-            display: flex;
-            align-items: center;
+            margin-right: 15px;
             padding: 8px 15px;
             background: rgba(255,255,255,0.1);
             border-radius: 50px;
+            transition: all 0.3s;
         }
+        .back-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
 
         .page-title {
-            flex-grow: 1;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
             margin: 0;
-            text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
         }
 
         /* --- 卡片樣式 --- */
         .step-card {
-            background: rgba(40, 44, 52, 0.8);
+            background: rgba(255, 255, 255, 0.05); /* 玻璃質感 */
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 25px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
+        /* 時間標記 */
         .time-badge {
             background: linear-gradient(135deg, #00c6ff, #0072ff);
             color: white;
-            padding: 5px 15px;
-            border-radius: 10px;
-            font-size: 1.3rem;
+            padding: 6px 15px;
+            border-radius: 12px;
+            font-size: 1.2rem;
             font-weight: 800;
             font-family: 'Montserrat', sans-serif;
             display: inline-block;
@@ -72,194 +79,197 @@
             box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
         }
 
-        .card-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; color: #fff; }
-        .card-text { font-size: 1.2rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 15px; }
-
-        /* --- 交通專用區塊 --- */
-        .transport-box {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 5px solid #26de81; /* 綠色線 */
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 10px 10px 0;
-        }
-        
-        .transport-step {
-            display: flex;
-            align-items: flex-start;
+        /* 標題與內文 */
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
             margin-bottom: 15px;
-        }
-        
-        .step-icon { font-size: 1.5rem; margin-right: 15px; }
-        
-        .line-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-right: 5px;
+            border-left: 5px solid #00c6ff;
+            padding-left: 15px;
         }
 
-        .line-dark-green { background-color: #26de81; color: #333; } /* 中央線 */
+        .card-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .highlight { color: #00c6ff; font-weight: bold; }
 
-        /* --- Google Maps 按鈕 --- */
+        /* 列表 */
+        .check-list { list-style: none; padding: 0; margin-top: 10px; }
+        .check-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+        }
+        .check-list li::before {
+            content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; left: 0; color: #00c6ff; top: 3px;
+        }
+
+        /* 交通區塊 */
+        .transport-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #aaa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+        }
+        .transport-step { display: flex; align-items: flex-start; margin-bottom: 15px; }
+        .step-icon { font-size: 1.4rem; margin-right: 15px; min-width: 30px; text-align: center; }
+        
+        .line-green { color: #26de81; font-weight: bold; }
+
+        /* 按鈕 */
         .btn-map {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
+            display: flex; justify-content: center; align-items: center; width: 100%;
             background: linear-gradient(135deg, #4285F4, #2b72ee);
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+            color: white; font-size: 1.1rem; font-weight: bold;
+            padding: 15px; border-radius: 15px; text-decoration: none;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
             transition: transform 0.2s;
         }
         .btn-map:active { transform: scale(0.98); }
-        .btn-map i { margin-right: 10px; font-size: 1.4rem; }
-        
-        /* 購物按鈕 */
-        .btn-shop { background: linear-gradient(135deg, #ff9f43, #ee5253); box-shadow: 0 4px 15px rgba(238, 82, 83, 0.4); }
+        .btn-map i { margin-right: 10px; }
 
-        /* --- Plan B --- */
+        .btn-shop { background: linear-gradient(135deg, #ff9f43, #ee5253); box-shadow: 0 5px 15px rgba(238, 82, 83, 0.4); }
+        .btn-food { background: linear-gradient(135deg, #e17055, #d63031); box-shadow: 0 5px 15px rgba(214, 48, 49, 0.4); }
+        .btn-plan-b { background: linear-gradient(135deg, #f39c12, #e67e22); box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4); }
+
+        /* Plan B 區塊 */
         .plan-b-box {
-            background: rgba(243, 156, 18, 0.15);
-            border: 2px solid #f39c12;
+            border: 2px dashed #f39c12;
+            background: rgba(243, 156, 18, 0.1);
+            padding: 20px;
             border-radius: 15px;
-            padding: 15px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
-        .plan-b-title { color: #f39c12; font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; }
+        .plan-b-title { color: #f39c12; font-weight: 700; margin-bottom: 8px; font-size: 1.1rem; }
     </style>
 </head>
 <body>
 
-    <div class="top-nav">
+    <div class="hero-header">
         <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
-        <h1 class="page-title">Day 4 大阪城</h1>
+        <h1 class="page-title">Day 4 大阪城與美食</h1>
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-4" style="max-width: 800px;">
 
         <div class="step-card">
             <div class="time-badge">09:30</div>
-            <h2 class="card-title">移動：前往大阪城</h2>
+            <h2 class="card-title">前往大阪城</h2>
             <div class="card-text">
-                <p>今天不用轉車！你的飯店就在「綠色線」上。</p>
+                <p>今天不用轉車！你的飯店就在「綠色線」上，直達大阪城。</p>
                 
-                <div class="transport-box">
-                    <h5 class="fw-bold mb-3">🚀 直達：本町 ➝ 森之宮</h5>
+                <div class="transport-box" style="border-left-color: #26de81;">
+                    <h4 style="color: #26de81; margin-bottom: 15px;">🚀 中央線 (直達)</h4>
                     <div class="transport-step">
                         <div class="step-icon">🟢</div>
-                        <div>進本町站，找 <strong><span class="line-tag line-dark-green">C</span>中央線 (深綠色)</strong>。</div>
+                        <div>進本町站，找 <span class="line-green">綠色「中央線」</span>。</div>
                     </div>
                     <div class="transport-step">
                         <div class="step-icon">🚃</div>
-                        <div>往「長田/生駒」方向，搭 <strong>3 站</strong>。</div>
+                        <div>
+                            往「長田 / 生駒」方向。<br>
+                            搭 3 站，在<strong>「森之宮 (C19)」</strong>下車。
+                        </div>
                     </div>
                     <div class="transport-step">
-                        <div class="step-icon">📍</div>
-                        <div>在<strong>「森之宮 (C19)」</strong>下車。</div>
+                        <div class="step-icon">👣</div>
+                        <div>
+                            往 <strong>3-B 出口</strong> 或 <strong>1 號出口</strong>，出來就是公園入口。
+                        </div>
                     </div>
                 </div>
 
+                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street7" target="_blank" class="btn-map">
+                    <i class="fa-solid fa-train"></i> 導航：森之宮站
+                </a>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka2" target="_blank" class="btn-map">
-                <i class="fa-solid fa-train"></i> 導航：森之宮站
-            </a>
         </div>
 
         <div class="step-card">
-            <div class="time-badge">09:50</div>
-            <h2 class="card-title">大阪城公園 散步</h2>
+            <div class="time-badge">10:00</div>
+            <h2 class="card-title">大阪城公園散步</h2>
             <div class="card-text">
-                <p>從森之宮站出口出來，就是公園入口。</p>
-                <p>不用買票上天守閣 (人很多)，在公園慢慢散步，看護城河和城堡外觀就很漂亮了。</p>
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Park" target="_blank" class="btn-map">
-                <i class="fa-solid fa-tree"></i> 導航：大阪城公園
-            </a>
-            
-            <div class="plan-b-box">
-                <div class="plan-b-title">☔ 下雨/太冷 備案</div>
-                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    <strong>大阪歷史博物館</strong>：就在公園對面，室內有大片玻璃窗可以看風景。
-                </p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka3" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
-                    導航：歷史博物館
+                <p>我們<strong>不一定要上天守閣</strong> (因為爬樓梯很累，人又多)。</p>
+                <p>建議在公園慢慢散步，看護城河、看巨大的城牆，跟城堡合照就很漂亮了。</p>
+                
+                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Park" target="_blank" class="btn-map">
+                    <i class="fa-solid fa-tree"></i> 導航：大阪城公園
                 </a>
+
+                <div class="plan-b-box">
+                    <div class="plan-b-title"><i class="fa-solid fa-cloud-rain"></i> Plan B：下雨或太冷？</div>
+                    <p style="margin:0; color:#ddd;">去旁邊的<strong>「大阪歷史博物館」</strong>。室內有冷暖氣，而且高樓層的玻璃窗可以<strong>俯瞰整個大阪城</strong>，景色比在下面看更壯觀！</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka3" target="_blank" class="btn-map btn-plan-b">
+                        <i class="fa-solid fa-building-columns"></i> 導航：大阪歷史博物館
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">12:00</div>
-            <h2 class="card-title">午餐：船場中心大樓</h2>
+            <h2 class="card-title">午餐：森之宮 Q's Mall</h2>
             <div class="card-text">
-                <p>搭地鐵原路回到<strong>「本町站」</strong>。</p>
-                <p>不用出到地面！直接找<strong>「船場中心大樓 (Semba Center Building)」</strong>的地下美食街。</p>
-                <p>這裡都是上班族吃的定食，便宜又大碗。</p>
-            </div>
-            
-            <div class="plan-b-box">
-                <div class="plan-b-title">🛡️ 推薦熟食店家</div>
-                <p class="mb-2" style="font-size: 1.1rem; color: #ddd;">
-                    <strong>一芳亭 (Ippoutei)</strong>：非常有名的黃色燒賣定食，全熟好吃。
-                </p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka4" target="_blank" class="btn-map" style="background: #f39c12; margin-top:5px;">
-                    導航：一芳亭 (燒賣)
+                <p>公園旁邊就有一間商場，不用跑遠。</p>
+                <ul class="check-list">
+                    <li><strong>美食街 (Food Court)：</strong> 有烏龍麵、漢堡排、拉麵，想吃什麼自己點。</li>
+                    <li><strong>優點：</strong> 空間大，可以坐下來好好休息，也有廁所。</li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street8" target="_blank" class="btn-map btn-food">
+                    <i class="fa-solid fa-utensils"></i> 導航：森之宮 Q's Mall
                 </a>
-            </div>
-
-            <div class="plan-b-box" style="margin-top: 10px; border-color: #e84118;">
-                <div class="plan-b-title" style="color: #e84118;">🛡️ Plan B 地下街迷路？</div>
-                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    直接上到地面，吃 <strong>Sukiya (すき家)</strong> 牛丼，最簡單。
-                </p>
             </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">14:00</div>
-            <h2 class="card-title">最後補貨 (本町/心齋橋)</h2>
+            <h2 class="card-title">心齋橋筋補貨 (DAISO)</h2>
             <div class="card-text">
-                <p>飯店附近走路就可以到心齋橋商店街的尾巴。</p>
-                <p><strong>Uniqlo、GU、大創 (Daiso)</strong> 這裡都有。</p>
+                <p>搭地鐵回到<strong>「本町站」</strong>。從這裡可以走到心齋橋商店街的尾巴。</p>
+                
+                <h4 style="color: #ff9f43; margin-top:15px;">🛍️ DAISO 旗艦店</h4>
+                <p>這棟樓集合了 <strong>DAISO (百元店)</strong>、<strong>Standard Products (質感雜貨)</strong> 和 <strong>THREEPPY (可愛風)</strong>。</p>
+                <p><strong>一定要買：</strong> 廚房小物、收納袋、零食。這裡最好買伴手禮送人。</p>
+                
+                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street9" target="_blank" class="btn-map btn-shop">
+                    <i class="fa-solid fa-bag-shopping"></i> 導航：DAISO 心齋橋旗艦店
+                </a>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka5" target="_blank" class="btn-map btn-shop">
-                <i class="fa-solid fa-bag-shopping"></i> 導航：大創 心齋橋店
-            </a>
         </div>
 
         <div class="step-card">
-            <div class="time-badge">17:00</div>
-            <h2 class="card-title">超市晚餐 Party</h2>
+            <div class="time-badge">18:00</div>
+            <h2 class="card-title">晚餐：在地靈魂美食</h2>
             <div class="card-text">
-                <p>最後一晚，我們買東西回飯店放鬆吃！</p>
-                <p><strong>Life 超市 (Supermarket)</strong></p>
-                <p>去買：草莓、牛奶、熟食便當、炸物、伴手禮零食。</p>
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Life+Supermarket+Nishiohashi" target="_blank" class="btn-map btn-shop">
-                <i class="fa-solid fa-basket-shopping"></i> 導航：Life 超市 (堺筋本町店)
-            </a>
-            
-            <div class="plan-b-box">
-                <div class="plan-b-title">💡 提醒</div>
-                <p class="mb-0" style="font-size: 1.1rem; color: #ddd;">
-                    這間超市很大，離飯店走路約 8-10 分鐘。記得自備購物袋！
-                </p>
-            </div>
-        </div>
-        
-        <div class="step-card" style="border: 2px solid #ffeb3b;">
-            <h2 class="card-title text-warning">🌙 收拾行李提醒</h2>
-            <div class="card-text">
-                <p>今晚請務必把行李整理好。</p>
-                <p>把要手提的東西 (護照、錢包、行動電源) 和要託運的東西分開。</p>
+                <p>今晚吃點厲害的！這間是<strong>大阪本町上班族的最愛</strong>，就在飯店附近，不用跑遠。</p>
+                
+                <h4 style="color: #e17055; margin-top:15px;">🥩 本町 Tonteki (厚切豬排)</h4>
+                <p>這不是炸豬排，而是用獨家醬汁煎得香噴噴的「厚切豬肉排」。</p>
+                <ul class="check-list">
+                    <li><strong>特色：</strong> 肉很厚但很嫩，蒜味醬油非常下飯。</li>
+                    <li><strong>保證全熟：</strong> 不敢吃生食的人絕對沒問題。</li>
+                    <li><strong>份量：</strong> 非常足夠，吃完超滿足！</li>
+                </ul>
+
+                <a href="https://www.google.com/maps/search/?api=1&query=Bic+Camera+Namba1" target="_blank" class="btn-map btn-food">
+                    <i class="fa-solid fa-utensils"></i> 導航：本町 Tonteki (厚切豬排)
+                </a>
+
+                <div class="plan-b-box">
+                    <div class="plan-b-title"><i class="fa-solid fa-basket-shopping"></i> Plan B：想回飯店吃？</div>
+                    <p style="margin:0; color:#ddd;">去 <strong>Life 超市 (堺筋本町店)</strong> 買熟食。推薦買<strong>「和牛燒肉便當」</strong>、<strong>「炸雞」</strong>和<strong>「草莓」</strong>，帶回飯店開電視慢慢吃。</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Life+Supermarket+Nishiohashi" target="_blank" class="btn-map btn-plan-b">
+                        <i class="fa-solid fa-basket-shopping"></i> 導航：Life 超市
+                    </a>
+                </div>
             </div>
         </div>
 
