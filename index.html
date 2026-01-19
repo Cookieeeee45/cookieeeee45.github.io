@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大阪獨旅・極致奢華版</title>
+    <title>大阪獨旅攻略</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* --- 上半部：大按鈕選單 (功能區) --- */
+        /* --- 上半部：功能選單 --- */
         .menu-card {
             display: flex;
             align-items: center;
@@ -86,11 +86,10 @@
         .card-text h2 { font-size: 1.6rem; font-weight: 700; margin: 0 0 8px 0; color: #fff; }
         .card-text p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.7); margin: 0; font-weight: 500; }
         .arrow-icon { margin-left: auto; color: rgba(255, 255, 255, 0.3); font-size: 1.8rem; }
-        
         .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent); margin: 40px 20px; }
 
         /* =========================================
-           下半部：純展示圖文區 (簡約版)
+           下半部：超大圖文展示區
         ========================================= */
         .visual-header {
             font-size: 1.5rem;
@@ -102,53 +101,89 @@
             text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
         }
 
-        /* 展示卡片 */
-        .visual-display-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* 大圖卡片容器 */
+        .big-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            margin-bottom: 25px;
-            padding: 15px; /* 縮小一點邊距 */
-            cursor: default;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* 左側文字 (只剩 DAY) */
-        .visual-text {
-            flex: 1;
-            padding-left: 10px;
-        }
-
-        .v-day-big {
+        .big-card-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem; /* 字體加大 */
-            color: #fff;
+            font-size: 2rem;
             font-weight: 800;
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(0, 198, 255, 0.8); /* 強烈霓虹光 */
-            margin: 0;
+            color: #fff;
+            margin-bottom: 15px;
+            padding-left: 5px;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.6);
         }
 
-        /* 右側圖片框 (16:9) */
-        .visual-img-box {
-            width: 180px; /* 圖片稍微加大 */
-            aspect-ratio: 16 / 9;
-            border-radius: 12px;
+        /* 圖片外框 */
+        .big-img-box {
+            width: 100%; /* 寬度佔滿 */
+            aspect-ratio: 16 / 9; /* 固定 16:9 比例 */
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.2);
-            flex-shrink: 0;
-            background: #000;
+            border: 2px solid rgba(255,255,255,0.2);
+            cursor: zoom-in; /* 滑鼠移上去變放大鏡 */
+            transition: transform 0.2s;
+            position: relative;
         }
 
-        .visual-img {
+        .big-img-box:hover {
+            transform: scale(1.02);
+            border-color: #00c6ff;
+        }
+
+        /* 提示文字 */
+        .click-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+        }
+
+        .big-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
+        /* --- 放大後的 Modal (燈箱) --- */
+        .modal-content {
+            background-color: transparent;
+            border: none;
+        }
+        .modal-body {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-img-full {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            border: 2px solid #fff;
+        }
+        .btn-close-custom {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            filter: drop-shadow(0 0 5px black);
+        }
     </style>
 </head>
 <body>
@@ -228,55 +263,73 @@
         <div class="divider"></div>
 
         <div class="visual-header">
-            <i class="fa-solid fa-camera"></i> 視覺化旅遊地圖
+            <i class="fa-solid fa-camera"></i> 視覺化地圖 (點擊放大)
         </div>
 
-        <div class="visual-display-card">
-            <div class="visual-text">
-                <div class="v-day-big">DAY 01</div>
-            </div>
-            <div class="visual-img-box">
-                <img src="day1.jpg" class="visual-img">
-            </div>
-        </div>
-
-        <div class="visual-display-card">
-            <div class="visual-text">
-                <div class="v-day-big">DAY 02</div>
-            </div>
-            <div class="visual-img-box">
-                <img src="https://placehold.co/320x180/302b63/FFF?text=Day+2" class="visual-img">
+        <div class="big-card">
+            <div class="big-card-title">DAY 01</div>
+            <div class="big-img-box" onclick="showImage('day1.jpg')">
+                <img src="day1.jpg" class="big-img" alt="Day 1">
+                <div class="click-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大</div>
             </div>
         </div>
 
-        <div class="visual-display-card">
-            <div class="visual-text">
-                <div class="v-day-big">DAY 03</div>
-            </div>
-            <div class="visual-img-box">
-                <img src="https://placehold.co/320x180/24243e/FFF?text=Day+3" class="visual-img">
-            </div>
-        </div>
-
-        <div class="visual-display-card">
-            <div class="visual-text">
-                <div class="v-day-big">DAY 04</div>
-            </div>
-            <div class="visual-img-box">
-                <img src="https://placehold.co/320x180/4b6cb7/FFF?text=Day+4" class="visual-img">
+        <div class="big-card">
+            <div class="big-card-title">DAY 02</div>
+            <div class="big-img-box" onclick="showImage('day2.jpg')">
+                <img src="day2.jpg" class="big-img" alt="Day 2">
+                <div class="click-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大</div>
             </div>
         </div>
 
-        <div class="visual-display-card">
-            <div class="visual-text">
-                <div class="v-day-big">DAY 05</div>
+        <div class="big-card">
+            <div class="big-card-title">DAY 03</div>
+            <div class="big-img-box" onclick="showImage('day3.jpg')">
+                <img src="day3.jpg" class="big-img" alt="Day 3">
+                <div class="click-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大</div>
             </div>
-            <div class="visual-img-box">
-                <img src="https://placehold.co/320x180/182848/FFF?text=Day+5" class="visual-img">
+        </div>
+
+        <div class="big-card">
+            <div class="big-card-title">DAY 04</div>
+            <div class="big-img-box" onclick="showImage('day4.jpg')">
+                <img src="day4.jpg" class="big-img" alt="Day 4">
+                <div class="click-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大</div>
+            </div>
+        </div>
+
+        <div class="big-card">
+            <div class="big-card-title">DAY 05</div>
+            <div class="big-img-box" onclick="showImage('day5.jpg')">
+                <img src="day5.jpg" class="big-img" alt="Day 5">
+                <div class="click-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大</div>
             </div>
         </div>
 
     </div>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-body position-relative">
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+                    <img src="" id="modalImgDisplay" class="modal-img-full">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 放大圖片的程式
+        function showImage(src) {
+            // 設定 Modal 裡的圖片路徑
+            document.getElementById('modalImgDisplay').src = src;
+            // 打開 Modal
+            var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            myModal.show();
+        }
+    </script>
 
 </body>
 </html>
