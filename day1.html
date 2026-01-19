@@ -3,171 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 1 - 抵達與在地生活</title>
+    <title>Day 1 - 抵達與九條漫遊</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 全局設定 --- */
+        /* --- 全局設定：大字體、高對比 --- */
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #fff;
+            background-color: #1a1a1a; /* 深黑灰背景，護眼 */
+            color: #ffffff;
+            font-size: 20px; /* 基礎字體加大 */
+            line-height: 1.6;
             padding-bottom: 80px;
         }
+
+        /* 頂部導航 */
         .top-nav {
-            background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); padding: 15px;
-            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex; align-items: center;
+            background: #000000;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #333;
+            display: flex;
+            align-items: center;
         }
         .back-btn {
-            color: #fff; text-decoration: none; font-size: 1.1rem;
-            background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            background: #333;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-right: 20px;
         }
-        .page-title { flex-grow: 1; text-align: center; font-size: 1.4rem; font-weight: 700; margin: 0; }
-        
-        /* 卡片樣式 */
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+            color: #ffcc00; /* 亮黃色標題 */
+        }
+
+        /* 卡片設計 */
         .step-card {
-            background: rgba(40, 44, 52, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px; padding: 20px; margin-bottom: 25px;
+            background: #2d2d2d;
+            border: 2px solid #444;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
         }
+
+        /* 時間標籤 */
         .time-badge {
-            background: #00c6ff; color: #000; padding: 3px 10px; border-radius: 5px;
-            font-weight: 800; font-family: 'Montserrat'; display: inline-block; margin-bottom: 10px;
+            background: #0d6efd; /* 鮮豔藍 */
+            color: white;
+            padding: 5px 15px;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
         }
+
+        /* 標題 */
         .card-title {
-            font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; color: #fff;
-            border-left: 4px solid #00c6ff; padding-left: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+            border-left: 8px solid #ffcc00; /* 左側亮條 */
+            padding-left: 15px;
         }
-        .check-list { list-style: none; padding: 0; }
+
+        /* 內文重點 */
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* 列表 */
+        .check-list {
+            list-style: none;
+            padding: 0;
+        }
         .check-list li {
-            position: relative; padding-left: 25px; margin-bottom: 8px; font-size: 1.1rem; color: #ddd;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1.3rem; /* 列表字體加大 */
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
         }
         .check-list li::before {
-            content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
-            position: absolute; left: 0; color: #00c6ff;
+            content: "\f00c"; /* 打勾符號 */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #0d6efd;
+            font-size: 1.2rem;
         }
-        
+
         /* 交通區塊 */
         .transport-box {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid #aaa; padding: 15px; margin: 15px 0; border-radius: 0 10px 10px 0;
+            background: #000;
+            border: 2px solid #0d6efd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
         }
-        .transport-step { display: flex; align-items: flex-start; margin-bottom: 10px; }
-        .step-icon { font-size: 1.2rem; margin-right: 10px; min-width: 25px; text-align: center; }
-        .warning-text { color: #ff6b81; font-weight: bold; background: rgba(255, 71, 87, 0.1); padding: 2px 5px; border-radius: 4px; }
-
-        /* Plan B */
-        .plan-b-box {
-            border: 2px dashed #f39c12; background: rgba(243, 156, 18, 0.1);
-            padding: 15px; border-radius: 15px; margin-top: 15px;
+        .transport-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
-        .plan-b-title { color: #f39c12; font-weight: bold; margin-bottom: 5px; }
+        .step-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
 
-        /* 按鈕 */
+        /* 警告框 */
+        .warning-box {
+            background: #3d0000;
+            border: 2px solid #ff4d4d;
+            color: #ff9999;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* 按鈕 (超大、高對比) */
         .btn-map {
-            display: block; text-align: center; background: #4285F4; color: white;
-            padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-top: 15px;
+            display: block;
+            text-align: center;
+            background: #0d6efd; /* 亮藍色 */
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            border: 2px solid #fff;
         }
-        .btn-food { background: #ff7675; }
-        .btn-plan-b { background: #f39c12; margin-top: 10px; }
+        .btn-map:hover {
+            background: #0b5ed7;
+            color: white;
+        }
+        .btn-map i { margin-right: 10px; }
+
+        .btn-food { background: #d63384; border-color: #fff; } /* 亮粉紅 */
+        .btn-plan-b { background: #fd7e14; border-color: #fff; } /* 亮橘色 */
+
+        /* Plan B 區塊 */
+        .plan-b-box {
+            border: 3px dashed #fd7e14;
+            background: rgba(253, 126, 20, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+        }
+        .plan-b-title {
+            color: #fd7e14;
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 
     <div class="top-nav">
         <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
-        <h1 class="page-title">Day 1 抵達大阪</h1>
+        <h1 class="page-title">Day 1 抵達與九條</h1>
     </div>
 
     <div class="container mt-4">
 
         <div class="step-card">
             <div class="time-badge">11:00</div>
-            <h2 class="card-title">第一關：買 ICOCA 卡</h2>
+            <h2 class="card-title">第一步：購買 ICOCA 卡</h2>
             <div class="card-text">
-                <p>出關後，上手扶梯到 2 樓，走過空橋到對面車站。</p>
+                <p>出關後上手扶梯到 <strong>2 樓</strong>，走過空橋到對面車站。</p>
+                
+                <h4 style="color: #0dcaf0;">👇 操作步驟：</h4>
                 <ul class="check-list">
-                    <li>找<strong>藍色 JR 售票機</strong> (不要去排人工櫃台，人很多)。</li>
-                    <li>螢幕右上角切換語言選<strong>「繁體中文」</strong>。</li>
+                    <li>找 <span class="highlight" style="color:#0d6efd;">藍色 JR 售票機</span>。</li>
+                    <li>螢幕右上角，切換語言選 <span class="highlight">「繁體中文」</span>。</li>
                     <li>點選螢幕按鈕 <strong>「購買 ICOCA」</strong> (企鵝圖案)。</li>
-                    <li>投入 <strong>2000 円</strong> (含500押金+1500額度)。</li>
+                    <li>投入 <span class="highlight">2000 円</span> 現金。</li>
+                    <li>取卡、找零。</li>
                 </ul>
+
                 <a href="https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Station" target="_blank" class="btn-map">
                     <i class="fa-solid fa-location-arrow"></i> 導航：關西機場車站
                 </a>
 
                 <div class="plan-b-box">
-                    <div class="plan-b-title">💡 Plan B 機器壞掉/不會用？</div>
-                    <p>直接去旁邊的「綠色窗口 (Green Window)」，把手機拿出來打字「ICOCA」給店員看，用現金買。</p>
+                    <div class="plan-b-title">💡 Plan B：機器不會用？</div>
+                    <p>直接去旁邊的<strong>「綠色窗口 (Green Window)」</strong>人工櫃台。</p>
+                    <p>手機打字「ICOCA」給店員看，用現金買。</p>
                 </div>
             </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">11:30</div>
-            <h2 class="card-title">前往九條民宿</h2>
+            <h2 class="card-title">第二步：前往九條民宿</h2>
             <div class="card-text">
                 <p>我們要去「九條站」，中間要在「弁天町」轉一次車。</p>
 
-                <div class="transport-box" style="border-left-color: #00a8ff;">
-                    <h5 class="fw-bold">🚀 第一段：JR 關空快速</h5>
+                <div class="transport-box">
+                    <h3 style="color: #0d6efd; margin-bottom: 15px;">🚀 第一段：搭 JR 火車</h3>
                     <div class="transport-step">
-                        <div class="step-icon">🎫</div>
-                        <div>拿 ICOCA 嗶卡進站 (藍色 JR 改札口)。</div>
+                        <div class="step-icon">1️⃣</div>
+                        <div>拿 ICOCA 嗶卡進站 (藍色閘門)。</div>
                     </div>
                     <div class="transport-step">
-                        <div class="step-icon">🚃</div>
+                        <div class="step-icon">2️⃣</div>
                         <div>
-                            下月台搭<strong>「關空快速」</strong>。<br>
-                            <span class="warning-text">⚠️ 絕對要坐第 1 ~ 4 節車廂！</span><br>
-                            <small>(因為 5-8 節會在半路分離，開往別的地方)</small>
+                            下月台搭 <span class="highlight">「關空快速」</span>。<br>
+                            <div class="warning-box">
+                                <i class="fa-solid fa-triangle-exclamation"></i> 重要：<br>
+                                絕對要坐「第 1 ~ 4 節」車廂！<br>
+                                (看地上的數字，寫 1-4 才能站)
+                            </div>
                         </div>
                     </div>
                     <div class="transport-step">
-                        <div class="step-icon">📍</div>
+                        <div class="step-icon">3️⃣</div>
                         <div>搭約 60 分鐘，在<strong>「弁天町」</strong>站下車。</div>
                     </div>
                 </div>
 
-                <div class="transport-box" style="border-left-color: #26de81;">
-                    <h5 class="fw-bold">🚀 第二段：轉搭中央線</h5>
+                <div class="transport-box" style="border-color: #26de81;">
+                    <h3 style="color: #26de81; margin-bottom: 15px;">🚀 第二段：轉搭地鐵</h3>
                     <div class="transport-step">
-                        <div class="step-icon">👣</div>
-                        <div>在弁天町下車後，找<strong>綠色「中央線」</strong>指標。<br>需出 JR 站，再進地鐵站。</div>
+                        <div class="step-icon">4️⃣</div>
+                        <div>
+                            在弁天町下車後，抬頭找 <span class="highlight" style="color:#26de81;">綠色「中央線」</span> 指標。<br>
+                            (需出 JR 站，再進地鐵站)。
+                        </div>
                     </div>
                     <div class="transport-step">
-                        <div class="step-icon">🚃</div>
-                        <div>往「本町 / 森之宮」方向，搭 <strong>1 站</strong>，在<strong>「九條 (C14)」</strong>下車。</div>
+                        <div class="step-icon">5️⃣</div>
+                        <div>
+                            往「本町 / 森之宮」方向，搭 <strong>1 站</strong>。<br>
+                            在<strong>「九條 (C14)」</strong>站下車。
+                        </div>
                     </div>
                 </div>
 
                 <a href="https://www.google.com/maps/search/?api=1&query=Bentencho+Station" target="_blank" class="btn-map">
-                    <i class="fa-solid fa-train"></i> 導航：弁天町站 (轉乘點)
+                    <i class="fa-solid fa-map-pin"></i> 導航：弁天町站 (轉乘點)
                 </a>
             </div>
         </div>
 
         <div class="step-card">
             <div class="time-badge">13:30</div>
-            <h2 class="card-title">民宿放行李</h2>
+            <h2 class="card-title">第三步：民宿 Check-in</h2>
             <div class="card-text">
                 <p><strong>地址：大阪市西區九條南 2-5-8</strong></p>
-                <p>從九條站出來，打開導航走過去約 3-5 分鐘。先確認如何進房（密碼或鑰匙盒）。</p>
+                <p>從九條站出來，打開下面導航，走路約 5 分鐘。</p>
+                <ul class="check-list">
+                    <li>先放行李。</li>
+                    <li>稍微休息一下，帶輕便包包出門。</li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=2-chōme-5-8+Kujōminami,+Osaka" target="_blank" class="btn-map">
+                    <i class="fa-solid fa-house-user"></i> 導航：民宿位置
+                </a>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Nishi+Ward+Kujominami+2-5-8" target="_blank" class="btn-map">
-                <i class="fa-solid fa-house-user"></i> 導航：民宿 (九條南 2-5-8)
-            </a>
         </div>
 
         <div class="step-card">
             <div class="time-badge">14:00</div>
-            <h2 class="card-title">午餐：神級大阪燒</h2>
+            <h2 class="card-title">午餐：在地大阪燒</h2>
             <div class="card-text">
                 <p>這家店在巷子裡，是九條的隱藏名店，很有日本家庭感。</p>
-                <h5 class="text-warning mt-3">Okonomiyaki Chitose (千歲)</h5>
+                <h3 class="highlight">Okonomiyaki Chitose (千歲)</h3>
                 <ul class="check-list">
                     <li><strong>必點：</strong> 豬肉大阪燒 (Buta Tama)、炒麵 (Yakisoba)。</li>
                     <li><strong>注意：</strong> 老闆會煎好放在你面前，直接用鏟子吃。</li>
@@ -177,10 +300,11 @@
                 </a>
 
                 <div class="plan-b-box">
-                    <div class="plan-b-title">🛡️ Plan B 客滿/沒開？</div>
-                    <p>走回大馬路上的「九條商店街」，去吃<strong>「餃子的王將」</strong>。這間是日本原版，餃子配炒飯很強。</p>
+                    <div class="plan-b-title">🛡️ Plan B：客滿或沒開？</div>
+                    <p>走回大馬路上的「九條商店街」，去吃<strong>「餃子的王將」</strong>。</p>
+                    <p>這間是日本原版，餃子配炒飯很強，有中文菜單。</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Gyoza+no+Ohsho+Kujo" target="_blank" class="btn-map btn-plan-b">
-                        <i class="fa-solid fa-bowl-rice"></i> 導航：餃子的王將 (九條店)
+                        <i class="fa-solid fa-bowl-rice"></i> 導航：餃子的王將
                     </a>
                 </div>
             </div>
@@ -188,26 +312,47 @@
 
         <div class="step-card">
             <div class="time-badge">18:00</div>
-            <h2 class="card-title">晚餐 & Aeon Mall 補給</h2>
+            <h2 class="card-title">晚餐：在地串炸老店</h2>
             <div class="card-text">
-                <p>從民宿走路約 8 分鐘就可以到巨蛋旁邊的 Aeon Mall。</p>
-                <p><strong>任務：活下去的補給</strong></p>
+                <p>來大阪一定要吃「串炸」(把肉和菜拿去炸)。不要去觀光區擠，我們吃九條在地的。</p>
+                
+                <h3 class="highlight">Kushikatsu Shirakaba (白樺 串炸)</h3>
+                <p>這是一間很有年代感的老店，非常有日本電影的氛圍。</p>
                 <ul class="check-list">
-                    <li>去 <strong>1樓 超市</strong> 買這幾天要喝的大罐礦泉水/茶 (2公升)。</li>
-                    <li>買明天早上的早餐 (麵包/牛奶)。</li>
-                    <li>晚餐可以在 <strong>4樓 美食街</strong> 解決 (有很多選擇)。</li>
+                    <li><strong>必點：</strong> 牛肉串 (Gyu)、蝦子 (Ebi)、蓮藕 (Renkon)。</li>
+                    <li><strong>規則：</strong> 醬汁如果是公用的盆子，<strong>「只能沾一次」</strong>(咬過不能再沾)。</li>
                 </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Osaka+Dome+City" target="_blank" class="btn-map">
-                    <i class="fa-solid fa-basket-shopping"></i> 導航：Aeon Mall 大阪巨蛋城
+                <a href="https://www.google.com/maps/search/?api=1&query=Kushikatsu+Shirakaba+Kujo" target="_blank" class="btn-map btn-food">
+                    <i class="fa-solid fa-beer-mug-empty"></i> 導航：白樺 串炸
                 </a>
 
                 <div class="plan-b-box">
-                    <div class="plan-b-title">🛡️ Plan B 不想走太遠？</div>
-                    <p>民宿附近有一間 <strong>LAWSON 便利商店</strong>，也可以買水和炸雞當晚餐。</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Lawson+Kujo+Station" target="_blank" class="btn-map btn-plan-b">
-                        <i class="fa-solid fa-store"></i> 導航：附近的 Lawson
+                    <div class="plan-b-title">🛡️ Plan B：不敢進去老店？</div>
+                    <p>去<strong>「鳥貴族 (Torikizoku)」</strong>。</p>
+                    <p>這是一間很有名的串燒居酒屋 (九條站旁邊就有)。</p>
+                    <p><strong>優點：</strong> 每一樣都均一價 (便宜)，而且有<strong>平板點餐 (有中文)</strong>，完全不用講日文。</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Torikizoku+Kujo" target="_blank" class="btn-map btn-plan-b">
+                        <i class="fa-solid fa-utensils"></i> 導航：鳥貴族 (九條店)
                     </a>
                 </div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="time-badge">20:00</div>
+            <h2 class="card-title">最後任務：買水與早餐</h2>
+            <div class="card-text">
+                <p>吃飽後，散步去 Aeon Mall (巨蛋旁邊的超大商場)。</p>
+                <p>去 <strong>1 樓的 Aeon Style 超市</strong>。</p>
+                <h4 style="color: #0dcaf0;">👇 購物清單：</h4>
+                <ul class="check-list">
+                    <li><span class="highlight">大罐礦泉水/茶</span> (買2公升的放民宿喝)。</li>
+                    <li><span class="highlight">明天的早餐</span> (麵包、牛奶、優格)。</li>
+                    <li><strong>水果：</strong> 日本草莓或橘子。</li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Osaka+Dome+City" target="_blank" class="btn-map">
+                    <i class="fa-solid fa-basket-shopping"></i> 導航：Aeon Mall 超市
+                </a>
             </div>
         </div>
 
