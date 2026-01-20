@@ -80,8 +80,13 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
+        /* 各種卡片的顏色設定 */
         .bg-help { background: linear-gradient(135deg, #ff0844, #ffb199); box-shadow: 0 0 20px rgba(255, 8, 68, 0.6); }
         .bg-note { background: linear-gradient(135deg, #fddb92, #d1fdff); box-shadow: 0 0 20px rgba(253, 219, 146, 0.6); color: #333; text-shadow: none;}
+        
+        /* 新增：九條與本町的專屬顏色 */
+        .bg-kujo { background: linear-gradient(135deg, #00d2d3, #48dbfb); box-shadow: 0 0 20px rgba(0, 210, 211, 0.6); }
+        .bg-honmachi { background: linear-gradient(135deg, #a29bfe, #6c5ce7); box-shadow: 0 0 20px rgba(108, 92, 231, 0.6); }
 
         .card-text h2 { font-size: 1.6rem; font-weight: 700; margin: 0 0 8px 0; color: #fff; }
         .card-text p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.7); margin: 0; font-weight: 500; }
@@ -97,6 +102,26 @@
     </div>
 
     <div class="container" style="max-width: 700px;">
+
+        <a href="kujo.html" class="menu-card" style="border-left: 4px solid #00d2d3;">
+            <div class="num-badge bg-kujo"><i class="fa-solid fa-street-view"></i></div>
+            <div class="card-text">
+                <h2 style="color: #00d2d3;">九條周邊散策</h2>
+                <p>民宿附近 • 玉出超市 • 隧道</p>
+            </div>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+        </a>
+
+        <a href="honmachi.html" class="menu-card" style="border-left: 4px solid #a29bfe;">
+            <div class="num-badge bg-honmachi"><i class="fa-solid fa-building"></i></div>
+            <div class="card-text">
+                <h2 style="color: #a29bfe;">本町在地探索</h2>
+                <p>飯店附近 • 船場中心 • 神社</p>
+            </div>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+        </a>
+
+        <div class="divider"></div>
 
         <a href="day1.html" class="menu-card">
             <div class="num-badge">1</div>
@@ -157,7 +182,7 @@
         <a href="notes.html" class="menu-card" style="border-left: 4px solid #f39c12;">
             <div class="num-badge bg-note"><i class="fa-solid fa-clipboard-list"></i></div>
             <div class="card-text">
-                <h2 style="color: #f39c12;">旅遊備忘錄 & 口袋名單</h2>
+                <h2 style="color: #f39c12;">旅遊備忘錄</h2>
                 <p>檢查清單 • 緊急電話</p>
             </div>
             <i class="fa-solid fa-chevron-right arrow-icon"></i>
