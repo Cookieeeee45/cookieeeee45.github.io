@@ -8,180 +8,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* --- 九條專屬主題：青藍色系 --- */
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #00d2d3 150%);
-            color: #fff;
-            min-height: 100vh;
-            padding-bottom: 60px;
-        }
-
-        .top-nav {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .back-btn {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
-            border-radius: 50px;
-            margin-right: 15px;
-            transition: 0.3s;
-        }
-        .back-btn:hover { background: rgba(255,255,255,0.3); }
-
-        .page-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin: 0;
-            background: linear-gradient(to right, #00d2d3, #54a0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* --- 景點卡片 --- */
-        .spot-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 210, 211, 0.3);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 30px; /* 拉大間距 */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .spot-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
-        }
-
-        .spot-icon {
-            font-size: 2rem;
-            margin-right: 15px;
-            color: #00d2d3;
-        }
-
-        .spot-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            margin: 0;
-        }
-
-        .spot-content h5 {
-            font-size: 1.1rem;
-            color: #00d2d3;
-            margin-top: 20px;
-            margin-bottom: 8px;
-            font-weight: bold;
-            border-left: 3px solid #00d2d3;
-            padding-left: 10px;
-        }
-
-        .spot-desc {
-            color: #ddd;
-            line-height: 1.6;
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-
-        /* --- 交通方式區塊 --- */
-        .access-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 15px;
-            border: 1px dashed rgba(255, 255, 255, 0.3);
-        }
-        .access-title {
-            color: #ff9f43; /* 醒目的橘色 */
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 1rem;
-        }
-        .access-text {
-            font-size: 0.95rem;
-            color: #fff;
-            line-height: 1.5;
-        }
-
-        /* --- 導航按鈕 --- */
-        .btn-map {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            background: linear-gradient(135deg, #00d2d3, #0abde3);
-            color: #000;
-            font-size: 1.1rem;
-            font-weight: 800;
-            padding: 12px;
-            border-radius: 12px;
-            text-decoration: none;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0, 210, 211, 0.4);
-            transition: transform 0.2s;
-        }
-        .btn-map:active { transform: scale(0.98); }
-        .btn-map i { margin-right: 8px; }
-
-        /* --- 分隔線 --- */
-        .divider-box {
-            text-align: center;
-            margin: 50px 0 30px;
-            position: relative;
-        }
-        .divider-text {
-            background: #09203f; /* 深色背景 */
-            padding: 0 15px;
-            color: #aaa;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
-            border-radius: 20px;
-        }
-        .divider-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: rgba(255,255,255,0.2);
-            z-index: 0;
-        }
-        
-        /* 額外推薦樣式 */
-        .extra-card {
-            border-color: rgba(255,255,255,0.1);
-            background: rgba(0,0,0,0.2);
-        }
-        .extra-card .spot-name { color: #ccc; }
-        .extra-card .btn-map {
-            background: #444; color: #fff; box-shadow: none;
-        }
+        body { font-family: 'Noto Sans TC', sans-serif; background: linear-gradient(135deg, #0f0c29, #00d2d3 150%); color: #fff; min-height: 100vh; padding-bottom: 60px; }
+        .top-nav { background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); padding: 15px 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000; }
+        .back-btn { color: #fff; text-decoration: none; font-size: 1.2rem; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 50px; margin-right: 15px; }
+        .page-title { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 800; margin: 0; background: linear-gradient(to right, #00d2d3, #54a0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .spot-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 210, 211, 0.3); border-radius: 20px; padding: 25px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .spot-header { display: flex; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .spot-icon { font-size: 2rem; margin-right: 15px; color: #00d2d3; }
+        .spot-name { font-size: 1.4rem; font-weight: 700; color: #fff; margin: 0; }
+        .spot-content h5 { font-size: 1.1rem; color: #00d2d3; margin-top: 20px; margin-bottom: 8px; font-weight: bold; border-left: 3px solid #00d2d3; padding-left: 10px; }
+        .spot-desc { color: #ddd; line-height: 1.6; font-size: 1rem; margin-bottom: 10px; }
+        .access-box { background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 15px; margin-top: 15px; border: 1px dashed rgba(255, 255, 255, 0.3); }
+        .access-title { color: #ff9f43; font-weight: bold; margin-bottom: 5px; font-size: 1rem; }
+        .access-text { font-size: 0.95rem; color: #fff; line-height: 1.5; }
+        .btn-map { display: flex; justify-content: center; align-items: center; width: 100%; background: linear-gradient(135deg, #00d2d3, #0abde3); color: #000; font-size: 1.1rem; font-weight: 800; padding: 12px; border-radius: 12px; text-decoration: none; margin-top: 20px; box-shadow: 0 5px 15px rgba(0, 210, 211, 0.4); }
+        .divider-box { text-align: center; margin: 50px 0 30px; position: relative; }
+        .divider-text { background: #09203f; padding: 0 15px; color: #aaa; font-size: 0.9rem; position: relative; z-index: 1; border-radius: 20px; }
+        .divider-line { position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: rgba(255,255,255,0.2); z-index: 0; }
+        .extra-card { border-color: rgba(255,255,255,0.1); background: rgba(0,0,0,0.2); }
+        .extra-card .btn-map { background: #444; color: #fff; box-shadow: none; }
     </style>
 </head>
 <body>
-
     <div class="top-nav">
         <a href="index.html" class="back-btn"><i class="fa-solid fa-chevron-left"></i> 返回</a>
         <h1 class="page-title">指定行程清單</h1>
     </div>
-
     <div class="container mt-4" style="max-width: 800px;">
         
         <div class="spot-card">
@@ -189,29 +41,16 @@
                 <div class="spot-icon"><i class="fa-solid fa-shop"></i></div>
                 <h2 class="spot-name">Kirara 九條商店街</h2>
             </div>
-            
             <div class="spot-content">
-                <p class="spot-desc">充滿昭和情懷的在地商店街，比起觀光區更具生活感，非常適合散步與尋寶。</p>
-                
+                <p class="spot-desc">充滿昭和情懷的在地商店街，比起觀光區更具生活感。</p>
                 <h5><i class="fa-solid fa-utensils"></i> 必吃美食</h5>
-                <p class="spot-desc">
-                    • <strong>可樂餅 (コロッケ)：</strong> 老字號肉舖現炸，在地人下午茶首選。<br>
-                    • <strong>日式和菓子：</strong> 古早味點心店，推薦大福或團子。
-                </p>
-                
-                <h5><i class="fa-solid fa-bag-shopping"></i> 必買商品</h5>
-                <p class="spot-desc">在地雜貨，可以找到平價日用品或復古小物。</p>
-
+                <p class="spot-desc">• <strong>可樂餅：</strong> 老字號肉舖現炸。<br>• <strong>日式和菓子：</strong> 古早味點心店。</p>
                 <div class="access-box">
-                    <div class="access-title"><i class="fa-solid fa-person-walking"></i> 交通方式：步行</div>
-                    <div class="access-text">
-                        就在您民宿外面！<br>
-                        從九條地鐵站出來，那條有屋頂的商店街就是了。
-                    </div>
+                    <div class="access-title"><i class="fa-solid fa-person-walking"></i> 交通方式</div>
+                    <div class="access-text">就在您民宿外面！從九條地鐵站出來即達。</div>
                 </div>
             </div>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=Kirara+Kujo+Shopping+Street" target="_blank" class="btn-map">
+            <a href="https://www.google.com/maps/search/?api=1&query=Kirara+Kujo+Shopping+Street+Osaka" target="_blank" class="btn-map">
                 <i class="fa-solid fa-location-arrow"></i> 導航：九條商店街
             </a>
         </div>
@@ -221,28 +60,16 @@
                 <div class="spot-icon"><i class="fa-solid fa-archway"></i></div>
                 <h2 class="spot-name">安治川隧道</h2>
             </div>
-            
             <div class="spot-content">
                 <p class="spot-desc">日本第一條沈箱式河底隧道，罕見可供行人與自行車使用的地下隧道。</p>
-                
                 <h5><i class="fa-solid fa-camera"></i> 體驗亮點</h5>
-                <p class="spot-desc">
-                    搭乘巨大的電梯降入河底，穿過僅限行人的隧道，體驗昭和早期的土木工程奇蹟。
-                </p>
-                
-                <h5><i class="fa-solid fa-mug-hot"></i> 必買/必吃</h5>
-                <p class="spot-desc">此處為交通設施，無直接販售商品，但隧道兩端出口常有隱藏的小咖啡館。</p>
-
+                <p class="spot-desc">搭乘巨大的電梯降入河底，體驗昭和早期的土木工程奇蹟。</p>
                 <div class="access-box">
-                    <div class="access-title"><i class="fa-solid fa-person-walking"></i> 交通方式：步行</div>
-                    <div class="access-text">
-                        從九條站 / 民宿出發，往北走約 10-15 分鐘。<br>
-                        (看到河堤旁邊有像電梯塔的建築就是入口)
-                    </div>
+                    <div class="access-title"><i class="fa-solid fa-person-walking"></i> 交通方式</div>
+                    <div class="access-text">從九條站往北走約 10-15 分鐘。</div>
                 </div>
             </div>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=Ajigawa+Tunnel" target="_blank" class="btn-map">
+            <a href="https://www.google.com/maps/search/?api=1&query=Ajigawa+Tunnel+Osaka" target="_blank" class="btn-map">
                 <i class="fa-solid fa-location-arrow"></i> 導航：安治川隧道
             </a>
         </div>
@@ -252,81 +79,42 @@
                 <div class="spot-icon"><i class="fa-solid fa-landmark"></i></div>
                 <h2 class="spot-name">大阪今昔生活館</h2>
             </div>
-            
             <div class="spot-content">
-                <p class="spot-desc">重現江戶時代晚期的大阪街景，最特別的是室內會根據時間模擬「白晝與黑夜」的光影變化。</p>
-                
-                <h5><i class="fa-solid fa-gift"></i> 必買商品</h5>
-                <p class="spot-desc">
-                    復古玩具與紀念品 (江戶、明治時代風格)。
-                </p>
-                
-                <h5><i class="fa-solid fa-utensils"></i> 必吃美食</h5>
-                <p class="spot-desc">
-                    博物館位於<strong>「天神橋筋商店街」</strong>起點，附近有無數美食 (名物串炸、章魚燒、大阪燒)。
-                </p>
-
+                <p class="spot-desc">重現江戶時代晚期的大阪街景，最特別的是室內會根據時間模擬光影變化。</p>
                 <div class="access-box" style="border-color: #ff9f43;">
                     <div class="access-title"><i class="fa-solid fa-train"></i> 交通方式：搭地鐵 (約 25 分鐘)</div>
                     <div class="access-text">
-                        1. <strong>九條站</strong> 搭 <span style="color:#26de81; font-weight:bold;">中央線</span> (綠色) 往生駒方向。<br>
-                        2. 在 <strong>堺筋本町站</strong> 轉乘。<br>
-                        3. 轉搭 <span style="color:#a55eea; font-weight:bold;">堺筋線</span> (棕色) 往北千里方向。<br>
-                        4. 在 <strong>天神橋筋六丁目站</strong> 下車，3號出口直達樓上。
+                        1. <strong>九條站</strong> 搭 <span style="color:#26de81;">中央線</span> 往生駒方向。<br>
+                        2. 在 <strong>堺筋本町站</strong> 轉乘 <span style="color:#a55eea;">堺筋線</span>。<br>
+                        3. 在 <strong>天神橋筋六丁目站</strong> 下車，3號出口。
                     </div>
                 </div>
             </div>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka0" target="_blank" class="btn-map">
+            <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Museum+of+Housing+and+Living" target="_blank" class="btn-map">
                 <i class="fa-solid fa-train"></i> 導航：大阪今昔生活館
             </a>
         </div>
 
         <div class="divider-box">
             <div class="divider-line"></div>
-            <span class="divider-text">以下是 AI 補充的在地推薦</span>
+            <span class="divider-text">AI 額外推薦</span>
         </div>
 
         <div class="spot-card extra-card">
-            <div class="spot-header">
-                <div class="spot-icon">🛒</div>
-                <h2 class="spot-name">玉出超市 (九條店)</h2>
-            </div>
-            <div class="spot-content">
-                <p class="spot-desc">
-                    大阪名物！24小時營業，霓虹燈超亮，東西超便宜，就在民宿附近，補給飲料必去。
-                </p>
-                <div class="access-box">
-                    <div class="access-title"><i class="fa-solid fa-person-walking"></i> 交通方式</div>
-                    <div class="access-text">就在商店街內，走路即達。</div>
-                </div>
-            </div>
+            <div class="spot-header"><div class="spot-icon">🛒</div><h2 class="spot-name">玉出超市 (九條店)</h2></div>
+            <div class="spot-content"><p class="spot-desc">大阪名物！24小時營業，霓虹燈超亮，補給飲料必去。</p></div>
             <a href="https://www.google.com/maps/search/?api=1&query=Super+Tamade+Kujo" target="_blank" class="btn-map">
                 <i class="fa-solid fa-basket-shopping"></i> 導航：玉出超市
             </a>
         </div>
 
         <div class="spot-card extra-card">
-            <div class="spot-header">
-                <div class="spot-icon">☕</div>
-                <h2 class="spot-name">喫茶 Chaplin</h2>
-            </div>
-            <div class="spot-content">
-                <p class="spot-desc">
-                    <strong>就在您民宿巷口！</strong><br>
-                    在地復古咖啡店，早餐時段點咖啡送吐司，充滿昭和人情味。
-                </p>
-                <div class="access-box">
-                    <div class="access-title"><i class="fa-solid fa-person-walking"></i> 交通方式</div>
-                    <div class="access-text">走路 1 分鐘 (九條南2丁目)。</div>
-                </div>
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Coffee+Shop+Chaplin+Kujo+Osaka" target="_blank" class="btn-map">
+            <div class="spot-header"><div class="spot-icon">☕</div><h2 class="spot-name">喫茶 Chaplin</h2></div>
+            <div class="spot-content"><p class="spot-desc">就在民宿巷口 (九條南2丁目) 的復古咖啡店。</p></div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Chaplin+Cafe+Osaka+Kujo" target="_blank" class="btn-map">
                 <i class="fa-solid fa-mug-hot"></i> 導航：喫茶 Chaplin
             </a>
         </div>
-
     </div>
-
 </body>
 </html>
