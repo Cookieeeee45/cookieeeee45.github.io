@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>本町基地：2日戰略攻略</title>
+    <title>本町基地攻略</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* --- 本町專屬主題：深紫色系 (戰略/繁華感) --- */
+        /* --- 本町專屬主題：紫色系 (但結構與 Kujo 相同) --- */
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background: linear-gradient(135deg, #2c0b4f, #5f27cd 150%);
+            background: linear-gradient(135deg, #2c0b4f, #6c5ce7 150%);
             color: #fff;
             min-height: 100vh;
             padding-bottom: 60px;
@@ -43,79 +43,140 @@
 
         .page-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             margin: 0;
-            background: linear-gradient(to right, #a29bfe, #fab1a0);
+            background: linear-gradient(to right, #a29bfe, #74b9ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- 標籤與提示 --- */
-        .tips-box {
-            background: rgba(162, 155, 254, 0.15);
-            border-left: 4px solid #a29bfe;
-            padding: 15px;
-            margin-bottom: 25px;
-            border-radius: 0 10px 10px 0;
-        }
-        .tips-title { color: #a29bfe; font-weight: bold; margin-bottom: 5px; }
-        .tips-content { font-size: 0.95rem; color: #dfe6e9; line-height: 1.6; }
-
-        /* --- 行程區塊標題 --- */
-        .day-header {
-            background: linear-gradient(90deg, #6c5ce7, transparent);
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin: 30px 0 20px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        .day-badge {
-            background: #fff; color: #6c5ce7;
-            padding: 2px 8px; border-radius: 5px; margin-right: 10px; font-size: 1rem;
-        }
-
-        /* --- 景點/店家卡片 --- */
+        /* --- 景點卡片 (Kujo 風格) --- */
         .spot-card {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid rgba(162, 155, 254, 0.4); /* 紫色邊框 */
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .spot-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
         }
 
-        .spot-title-row {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+        .spot-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: #a29bfe;
         }
-        .spot-name { font-size: 1.25rem; font-weight: 700; color: #fff; }
-        .spot-tag { font-size: 0.8rem; background: #e84393; color: white; padding: 2px 8px; border-radius: 4px; }
-        .spot-tag.shopping { background: #00b894; } /* 購物綠色 */
-        .spot-tag.food { background: #e17055; } /* 美食橘色 */
 
-        .spot-detail h5 {
-            font-size: 1rem; color: #74b9ff; margin-top: 10px; margin-bottom: 5px; font-weight: bold;
+        .spot-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
         }
-        .spot-desc { font-size: 0.95rem; color: #ccc; line-height: 1.5; margin-bottom: 5px; }
+
+        .spot-tag {
+            font-size: 0.9rem;
+            background: rgba(162, 155, 254, 0.2);
+            color: #a29bfe;
+            padding: 3px 8px;
+            border-radius: 5px;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .spot-content h5 {
+            font-size: 1.1rem;
+            color: #a29bfe;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            border-left: 3px solid #a29bfe;
+            padding-left: 10px;
+        }
+
+        .spot-desc {
+            color: #ddd;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
         .highlight { color: #ffeaa7; font-weight: bold; }
+
+        /* --- 交通方式區塊 --- */
+        .access-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            border: 1px dashed rgba(162, 155, 254, 0.5);
+        }
+        .access-title {
+            color: #ff9f43; /* 醒目的橘色 */
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        .access-text {
+            font-size: 0.95rem;
+            color: #fff;
+            line-height: 1.5;
+        }
 
         /* --- 導航按鈕 --- */
         .btn-map {
-            display: block; width: 100%; text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
             background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            color: #fff; padding: 10px; border-radius: 10px;
-            text-decoration: none; font-weight: bold; margin-top: 15px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 800;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
             transition: transform 0.2s;
         }
         .btn-map:active { transform: scale(0.98); }
-        .btn-map.sub-btn { 
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); margin-top: 10px; font-size: 0.9rem;
+        .btn-map i { margin-right: 8px; }
+
+        .btn-sub-map {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            padding: 8px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 5px;
+            font-size: 0.9rem;
         }
 
+        /* --- 分隔標題 --- */
+        .day-divider {
+            text-align: center;
+            margin: 40px 0 20px;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #a29bfe;
+            border: 1px solid rgba(162, 155, 254, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -127,146 +188,228 @@
 
     <div class="container mt-4" style="max-width: 800px;">
 
-        <div class="tips-box">
-            <div class="tips-title"><i class="fa-solid fa-hotel"></i> 住處優勢 (本町站)</div>
-            <div class="tips-content">
-                您的飯店位於交通樞紐。回程時，無論在梅田、心齋橋還是天王寺，只要搭乘 <strong style="color:#ff7675;">紅色御堂筋線</strong> 都能直達本町，不用轉車，買太多東西隨時可以拿回來放！
-            </div>
-        </div>
+        <div class="day-divider">Day 1：大阪城 • 黑門 • 心齋橋</div>
 
-        <div class="day-header">
-            <span class="day-badge">Day 1</span> 大阪城 • 黑門市場 • 心齋橋
+        <div class="spot-card">
+            <div class="spot-header">
+                <div class="spot-icon"><i class="fa-solid fa-tree"></i></div>
+                <h2 class="spot-name">大阪城公園</h2>
+                <div class="spot-tag">上午</div>
+            </div>
+            
+            <div class="spot-content">
+                <p class="spot-desc">大阪必去地標。建議不一定要上天守閣(人多)，在公園散步看護城河就很舒服。</p>
+                <div class="access-box">
+                    <div class="access-title"><i class="fa-solid fa-train"></i> 交通方式</div>
+                    <div class="access-text">
+                        從 <strong>本町站</strong> 搭 <span style="color:#26de81;">中央線 (綠色)</span><br>
+                        往長田方向 ➝ <strong>谷町四丁目</strong> 下車 (9號出口)。
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Park" target="_blank" class="btn-map">
+                <i class="fa-solid fa-location-arrow"></i> 導航：大阪城公園
+            </a>
         </div>
 
         <div class="spot-card">
-            <div class="spot-title-row">
-                <div class="spot-name">大阪城公園</div>
-                <span class="spot-tag">上午</span>
+            <div class="spot-header">
+                <div class="spot-icon"><i class="fa-solid fa-fish"></i></div>
+                <h2 class="spot-name">黑門市場</h2>
+                <div class="spot-tag">午餐</div>
             </div>
-            <div class="spot-desc">大阪的地標。建議不一定要上天守閣，公園散步就很舒服。</div>
-            <div class="spot-desc"><i class="fa-solid fa-train"></i> 交通：本町搭中央線至「谷町四丁目」。</div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Park" target="_blank" class="btn-map"><i class="fa-solid fa-location-arrow"></i> 導航：大阪城公園</a>
-        </div>
-
-        <div class="spot-card" style="border-color: #fab1a0;">
-            <div class="spot-title-row">
-                <div class="spot-name">黑門市場 (必吃攻略)</div>
-                <span class="spot-tag food">午餐</span>
-            </div>
-            <div class="spot-desc">建議「少量多餐」，每攤買一點分著吃。</div>
-            <div class="spot-desc"><i class="fa-solid fa-train"></i> 交通：谷町四丁目搭谷町線至「日本橋」。</div>
-
-            <hr style="border-color:rgba(255,255,255,0.2);">
-
-            <div class="spot-detail">
-                <h5>🐟 黑門三平 (海鮮)</h5>
-                <p class="spot-desc">市場最大生鮮店。必吃：<span class="highlight">大干貝、黑鮪魚大腹 (Otoro)</span>。店內有座位。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Sanpei" target="_blank" class="btn-map sub-btn">導航：黑門三平</a>
-
-                <h5>🍢 石橋食品 (關東煮)</h5>
-                <p class="spot-desc">50年老店。必點：<span class="highlight">燉蘿蔔 (Daikon)</span>，極其入味的大阪家庭味。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Ishibashi+Shokuhin+Kuromon" target="_blank" class="btn-map sub-btn">導航：石橋食品</a>
-
-                <h5>🥩 丸善食肉店 (和牛)</h5>
-                <p class="spot-desc">神戶牛/黑毛和牛現切現煎。可買小份體驗入口即化的口感。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Maruzen+Shokuniku+Kuromon" target="_blank" class="btn-map sub-btn">導航：丸善食肉店</a>
-            </div>
-        </div>
-
-        <div class="spot-card" style="border-color: #55efc4;">
-            <div class="spot-title-row">
-                <div class="spot-name">OS Drug (黑門店)</div>
-                <span class="spot-tag shopping">最便宜</span>
-            </div>
-            <div class="spot-detail">
+            
+            <div class="spot-content">
+                <p class="spot-desc">建議「少量多餐」，每一攤買一點分著吃。</p>
+                
+                <h5><i class="fa-solid fa-utensils"></i> 必吃三本柱</h5>
                 <p class="spot-desc">
-                    <strong>專買：合利他命、EVE 止痛藥。</strong><br>
-                    <span class="highlight">只收現金，不退稅。</span><br>
-                    但它的「含稅價」往往比別家「退稅後」還便宜。藥品通常在櫃台後方，直接給店員看圖片拿貨。
+                    <strong>1. 黑門三平：</strong> 吃大干貝、黑鮪魚大腹。<br>
+                    <a href="https://maps.google.com/?cid=1307738611132439389&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ3" target="_blank" class="btn-sub-map">📍 導航：黑門三平</a>
                 </p>
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=OS+Drug+Kuromon" target="_blank" class="btn-map" style="background:#00b894;">導航：OS Drug</a>
-        </div>
+                <p class="spot-desc">
+                    <strong>2. 石橋食品：</strong> 必點燉蘿蔔 (關東煮)。<br>
+                    <a href="https://maps.google.com/?cid=1307738611132439389&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ4" target="_blank" class="btn-sub-map">📍 導航：石橋食品</a>
+                </p>
+                <p class="spot-desc">
+                    <strong>3. 丸善食肉店：</strong> 現煎神戶牛/和牛。<br>
+                    <a href="https://maps.google.com/?cid=1307738611132439389&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ5" target="_blank" class="btn-sub-map">📍 導航：丸善食肉店</a>
+                </p>
 
-        <div class="spot-card">
-            <div class="spot-title-row">
-                <div class="spot-name">法善寺橫丁 & 道頓堀</div>
-                <span class="spot-tag">下午/晚上</span>
-            </div>
-            <div class="spot-desc">從黑門市場走路過去約 10 分鐘。可以一路逛心齋橋筋商店街，最後在道頓堀吃晚餐。</div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Hozenji+Yokocho" target="_blank" class="btn-map">導航：法善寺橫丁</a>
-        </div>
+                <h5><i class="fa-solid fa-capsules"></i> 藥妝攻略 (OS Drug)</h5>
+                <p class="spot-desc">
+                    市場內的 OS Drug <strong>只收現金、不退稅</strong>，但價格往往比別家退稅後還便宜。合利他命跟 EVE 可以在這買。
+                    <a href="https://maps.google.com/?cid=1307738611132439389&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ6" target="_blank" class="btn-sub-map" style="background:#00b894; color:#000;">📍 導航：OS Drug 黑門店</a>
+                </p>
 
-        <div class="day-header">
-            <span class="day-badge">Day 2</span> 今昔館 • 船場 • 新世界
-        </div>
-
-        <div class="spot-card">
-            <div class="spot-title-row">
-                <div class="spot-name">大阪今昔生活館</div>
-                <span class="spot-tag">上午</span>
-            </div>
-            <div class="spot-desc">重現江戶時代大阪街景，室內有日夜變化。位於全日本最長「天神橋筋商店街」起點。</div>
-            <div class="spot-desc"><i class="fa-solid fa-train"></i> 交通：本町搭堺筋線至「天神橋筋六丁目」。</div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Museum+of+Housing+and+Living" target="_blank" class="btn-map">導航：今昔生活館</a>
-        </div>
-
-        <div class="spot-card">
-            <div class="spot-title-row">
-                <div class="spot-name">船場中心大樓</div>
-                <span class="spot-tag shopping">下午</span>
-            </div>
-            <div class="spot-desc">
-                <strong>就在您住處附近！</strong><br>
-                從天神橋筋六丁目搭車回「堺筋本町」即達。<br>
-                這裡有老牌批發商，偶爾有專櫃化妝品 (如 SK-II) 的驚人批發價，還有昭和風雜貨。
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Semba+Center+Building" target="_blank" class="btn-map">導航：船場中心大樓</a>
-        </div>
-
-        <div class="spot-card" style="border-color: #55efc4;">
-            <div class="spot-title-row">
-                <div class="spot-name">大國藥妝 (本町店)</div>
-                <span class="spot-tag shopping">離家近</span>
-            </div>
-            <div class="spot-desc">
-                如果不想提重物逛街，可以在這裡買面膜、眼罩或大量藥妝。常有組合優惠，買完直接回飯店放，超輕鬆。
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Daikoku+Drug+Honmachi" target="_blank" class="btn-map" style="background:#00b894;">導航：大國藥妝 本町店</a>
-        </div>
-
-        <div class="spot-card" style="border-color: #fab1a0;">
-            <div class="spot-title-row">
-                <div class="spot-name">新世界 & 通天閣</div>
-                <span class="spot-tag food">晚餐</span>
-            </div>
-            <div class="spot-desc">懷舊庶民美食一級戰區。</div>
-            <div class="spot-desc"><i class="fa-solid fa-train"></i> 交通：堺筋本町搭堺筋線至「惠美須町」。</div>
-
-            <hr style="border-color:rgba(255,255,255,0.2);">
-
-            <div class="spot-detail">
-                <h5>🍢 元祖炸串 達摩 (通天閣店)</h5>
-                <p class="spot-desc">憤怒老闆招牌。必點：元祖牛肉串、鵪鶉蛋。<br><strong style="color:#ff7675;">注意：醬汁嚴禁二次沾取！</strong></p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kushikatsu+Daruma+Tsutenkaku" target="_blank" class="btn-map sub-btn">導航：達摩炸串</a>
-
-                <h5>🥩 八重勝 (土手燒)</h5>
-                <p class="spot-desc">在地排隊名店。必點：<span class="highlight">土手燒 (Doteyaki)</span>，味噌燉煮的牛筋，口感軟爛濃郁。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" target="_blank" class="btn-map sub-btn">導航：八重勝</a>
-
-                <h5>🍹 千成屋珈琲 (混合果汁)</h5>
-                <p class="spot-desc"><strong>綜合果汁 (Mixed Juice) 發源地。</strong> 昭和懷舊風，逛累了來喝一杯由香蕉、橘子調製的濃郁果汁。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Sennariya+Coffee" target="_blank" class="btn-map sub-btn">導航：千成屋珈琲</a>
+                <div class="access-box">
+                    <div class="access-title"><i class="fa-solid fa-train"></i> 交通方式</div>
+                    <div class="access-text">
+                        從 <strong>谷町四丁目</strong> 搭 <span style="color:#a29bfe;">谷町線 (紫色)</span><br>
+                        往天王寺方向 ➝ <strong>日本橋站</strong> 下車 (10號出口)。
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="spot-card">
-            <div class="spot-title-row">
-                <div class="spot-name">阿倍野展望台 (Harukas)</div>
-                <span class="spot-tag">夜景</span>
+            <div class="spot-header">
+                <div class="spot-icon"><i class="fa-solid fa-torii-gate"></i></div>
+                <h2 class="spot-name">法善寺橫丁</h2>
+                <div class="spot-tag">下午散步</div>
             </div>
-            <div class="spot-desc">從新世界步行約 10-15 分鐘可到天王寺。日本最高大樓之一，夜景無敵。回程直接搭御堂筋線回本町。</div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Abeno+Harukas" target="_blank" class="btn-map">導航：阿倍野展望台</a>
+            
+            <div class="spot-content">
+                <p class="spot-desc">隱藏在熱鬧市區的石板小路，氣氛非常好。記得去潑水參拜「不動明王」。</p>
+                <div class="access-box">
+                    <div class="access-title"><i class="fa-solid fa-person-walking"></i> 交通方式 (這段用走的！)</div>
+                    <div class="access-text">
+                        從黑門市場走路約 8-10 分鐘。<br>
+                        過馬路往難波方向走即達。
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Hozenji+Yokocho" target="_blank" class="btn-map">
+                <i class="fa-solid fa-location-arrow"></i> 導航：法善寺橫丁
+            </a>
+        </div>
+
+        <div class="spot-card" style="border-color: #ff7675;">
+            <div class="spot-header">
+                <div class="spot-icon" style="color:#ff7675;"><i class="fa-solid fa-shoe-prints"></i></div>
+                <h2 class="spot-name">心齋橋 & 道頓堀</h2>
+                <div class="spot-tag" style="background:rgba(255, 118, 117,0.2); color:#ff7675;">重點迷宮</div>
+            </div>
+            
+            <div class="spot-content">
+                <p class="spot-desc">這區人超級多，請跟著下面的順序走，才不會繞圈圈。</p>
+
+                <h5>Step 1: 前往固力果跑跑人 (戎橋)</h5>
+                <p class="spot-desc">
+                    從法善寺出來，往北走一點點就會看到運河。那座人最多的橋就是了。
+                </p>
+                <a href="https://maps.google.com/?cid=9301749341038512449&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ2" target="_blank" class="btn-map" style="margin-top:5px;">
+                    <i class="fa-solid fa-camera"></i> 導航：固力果跑跑人
+                </a>
+
+                <h5 style="margin-top:25px;">Step 2: 逛心齋橋筋 (藥妝/服飾)</h5>
+                <p class="spot-desc">
+                    過橋後那條有屋頂的超長商店街就是心齋橋筋。大國藥妝、松本清都在這。
+                </p>
+                <a href="https://maps.google.com/?cid=9301749341038512449&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ3" target="_blank" class="btn-map" style="margin-top:5px;">
+                    <i class="fa-solid fa-bag-shopping"></i> 導航：心齋橋筋入口
+                </a>
+
+                <h5 style="margin-top:25px;">Step 3: 回道頓堀吃晚餐</h5>
+                <p class="spot-desc">
+                    買完東西後，走回運河邊 (道頓堀通)，這裡全是餐廳 (一蘭、神座、章魚燒)。
+                </p>
+                <a href="https://maps.google.com/?cid=9301749341038512449&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ4" target="_blank" class="btn-map" style="margin-top:5px; background:#e17055;">
+                    <i class="fa-solid fa-utensils"></i> 導航：道頓堀美食街
+                </a>
+            </div>
+        </div>
+
+        <div class="day-divider">Day 2：今昔館 • 船場 • 新世界</div>
+
+        <div class="spot-card">
+            <div class="spot-header">
+                <div class="spot-icon"><i class="fa-solid fa-landmark"></i></div>
+                <h2 class="spot-name">大阪今昔生活館</h2>
+                <div class="spot-tag">上午</div>
+            </div>
+            <div class="spot-content">
+                <p class="spot-desc">室內重現江戶時代街景。出館就是日本最長的「天神橋筋商店街」。</p>
+                <div class="access-box">
+                    <div class="access-title"><i class="fa-solid fa-train"></i> 交通方式</div>
+                    <div class="access-text">
+                        從 <strong>本町站</strong> 搭 <span style="color:#a55eea;">堺筋線 (棕色)</span><br>
+                        往北千里方向 ➝ <strong>天神橋筋六丁目</strong> 下車 (3號出口)。
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kyocera+Dome+Osaka0" target="_blank" class="btn-map">
+                <i class="fa-solid fa-location-dot"></i> 導航：今昔生活館
+            </a>
+        </div>
+
+        <div class="spot-card">
+            <div class="spot-header">
+                <div class="spot-icon"><i class="fa-solid fa-building"></i></div>
+                <h2 class="spot-name">船場中心大樓</h2>
+                <div class="spot-tag">下午挖寶</div>
+            </div>
+            <div class="spot-content">
+                <p class="spot-desc">
+                    <strong>就在您住處附近！</strong><br>
+                    這裡有老牌批發商，偶爾有專櫃化妝品 (如 SK-II) 的驚人批發價，還有昭和風雜貨。
+                </p>
+                <div class="access-box">
+                    <div class="access-title"><i class="fa-solid fa-train"></i> 交通方式</div>
+                    <div class="access-text">
+                        從 天神橋筋六丁目 搭 <span style="color:#a55eea;">堺筋線</span> 回 <strong>堺筋本町</strong> 即可。
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Semba+Center+Building" target="_blank" class="btn-map">
+                <i class="fa-solid fa-bag-shopping"></i> 導航：船場中心大樓
+            </a>
+        </div>
+
+        <div class="spot-card">
+            <div class="spot-header">
+                <div class="spot-icon"><i class="fa-solid fa-beer-mug-empty"></i></div>
+                <h2 class="spot-name">新世界 (美食清單)</h2>
+                <div class="spot-tag">傍晚</div>
+            </div>
+            
+            <div class="spot-content">
+                <p class="spot-desc">懷舊庶民美食一級戰區，氣氛非常熱鬧。</p>
+                
+                <h5><i class="fa-solid fa-utensils"></i> 必吃名店</h5>
+                <p class="spot-desc">
+                    <strong>1. 達摩炸串：</strong> 必點元祖牛肉串、鵪鶉蛋。<br>
+                    <span class="text-warning">*注意：醬汁嚴禁二次沾取！</span><br>
+                    <a href="https://maps.google.com/?cid=1307738611132439389&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ7" target="_blank" class="btn-sub-map">📍 導航：達摩炸串 (通天閣店)</a>
+                </p>
+                <p class="spot-desc">
+                    <strong>2. 八重勝：</strong> 必點土手燒 (味噌牛筋)。<br>
+                    <a href="https://maps.google.com/?cid=1307738611132439389&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ8" target="_blank" class="btn-sub-map">📍 導航：八重勝</a>
+                </p>
+                <p class="spot-desc">
+                    <strong>3. 千成屋珈琲：</strong> 綜合果汁發源地。<br>
+                    <a href="https://maps.google.com/?cid=1307738611132439389&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ9" target="_blank" class="btn-sub-map">📍 導航：千成屋珈琲</a>
+                </p>
+
+                <div class="access-box">
+                    <div class="access-title"><i class="fa-solid fa-train"></i> 交通方式</div>
+                    <div class="access-text">
+                        從 堺筋本町 搭 <span style="color:#a55eea;">堺筋線</span><br>
+                        往天下茶屋方向 ➝ <strong>惠美須町</strong> 下車 (3號出口)。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spot-card">
+            <div class="spot-header">
+                <div class="spot-icon"><i class="fa-solid fa-eye"></i></div>
+                <h2 class="spot-name">阿倍野展望台</h2>
+                <div class="spot-tag">夜景</div>
+            </div>
+            <div class="spot-content">
+                <p class="spot-desc">日本最高大樓之一，夜景無敵。就在天王寺站上面。</p>
+                <div class="access-box">
+                    <div class="access-title"><i class="fa-solid fa-person-walking"></i> 交通方式</div>
+                    <div class="access-text">
+                        從新世界通天閣走路約 10-15 分鐘可到天王寺。<br>
+                        回程：搭 <span style="color:#ff7675;">御堂筋線 (紅色)</span> 直達本町。
+                    </div>
+                </div>
+            </div>
+            <a href="https://maps.google.com/?cid=1693844595140273708&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ0" target="_blank" class="btn-map">
+                <i class="fa-solid fa-location-arrow"></i> 導航：阿倍野展望台
+            </a>
         </div>
 
     </div>
