@@ -23,7 +23,7 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px 20px 30px;
+            padding: 40px 20px 30px; /*稍微調整padding*/
             text-align: center;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -38,17 +38,41 @@
             background: linear-gradient(to right, #00c6ff, #0072ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         
         .hero-date {
             font-size: 1.1rem;
             font-weight: 500;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 5px 15px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+
+        /* --- Google 翻譯按鈕 (新增) --- */
+        .btn-translate-top {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335); /* Google 色 */
+            background-size: 300% 300%;
+            animation: gradientBG 5s ease infinite;
+            color: white;
+            text-decoration: none;
+            padding: 10px 25px;
             border-radius: 50px;
-            display: inline-block;
-            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.2s;
+        }
+        .btn-translate-top:active { transform: scale(0.95); }
+        .btn-translate-top i { margin-right: 8px; font-size: 1.2rem; }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* --- 上半部：功能選單 --- */
@@ -99,6 +123,10 @@
     <div class="hero-header">
         <div class="hero-title"><i class="fa-solid fa-plane"></i> OSAKA TRIP</div>
         <div class="hero-date">2026.01.21 — 01.25</div>
+        
+        <a href="https://translate.google.com/?sl=ja&tl=zh-TW&op=translate" class="btn-translate-top" target="_blank">
+            <i class="fa-solid fa-language"></i> Google 翻譯
+        </a>
     </div>
 
     <div class="container" style="max-width: 700px;">
